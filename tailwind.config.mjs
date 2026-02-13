@@ -2,6 +2,9 @@
 const config = {
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to right, #1a2131 0%, #d8bb98 50%, #1a2131 100%)',
+      },
       typography: () => ({
         DEFAULT: {
           css: [
