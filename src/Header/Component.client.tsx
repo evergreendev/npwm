@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import Image from 'next/image'
 
 interface HeaderClientProps {
   data: Header
@@ -30,13 +30,35 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="py-8 flex justify-between">
-        <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
-        </Link>
-        <HeaderNav data={data} />
+    <header className="relative z-20 bg-background py-4">
+      <div className="w-full h-1.5 bg-custom-gradient" />
+      <div className="container">
+        <div className="flex gap-8">
+          {data.logos && (
+            <div className="flex gap-4 items-center -mt-1.5">
+              {data.logos.map((logo) => {
+                if (typeof logo === 'number') return null
+
+                return (
+                  <Link href="/" key={logo.id}>
+                    <Image
+                      className="w-40"
+                      src={logo.url || ''}
+                      alt={logo.alt || ''}
+                      width={logo.width || 100}
+                      height={logo.height || 100}
+                      loading="eager"
+                      priority={true}
+                    />
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+          <HeaderNav data={data} />
+        </div>
       </div>
+      <div className="w-full h-1.5 bg-custom-gradient" />
     </header>
   )
 }
