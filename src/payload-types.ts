@@ -200,7 +200,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | HoursBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -782,6 +782,16 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HoursBlock".
+ */
+export interface HoursBlock {
+  mode: 'current' | 'all';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hoursBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -1139,6 +1149,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        hoursBlock?: T | HoursBlockSelect<T>;
       };
   meta?:
     | T
@@ -1235,6 +1246,15 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HoursBlock_select".
+ */
+export interface HoursBlockSelect<T extends boolean = true> {
+  mode?: T;
   id?: T;
   blockName?: T;
 }
