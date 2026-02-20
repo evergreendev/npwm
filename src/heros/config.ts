@@ -49,6 +49,9 @@ export const hero: Field = {
       name: 'headerLinks',
       type: 'array',
       maxRows: 3,
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
+      },
       fields: [
         {
           name: 'header',
