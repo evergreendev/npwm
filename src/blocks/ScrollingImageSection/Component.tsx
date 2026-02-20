@@ -10,7 +10,7 @@ export const ScrollingImageSection: React.FC<ScrollingImageSectionProps> = ({
   subheader,
 }) => {
   return (
-    <section className="relative h-[300vh] w-full">
+    <section className="relative h-screen w-full">
       {/* Background Image Container - Sticky */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {backgroundImage && typeof backgroundImage === 'object' && (
