@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
-import Link from 'next/link'
+import { SlidingUnderlineLink } from '@/components/SlidingUnderlineLink'
 import VerticalDivider from '@/components/VerticalDivider'
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) => {
@@ -33,7 +33,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
                     {description && <p className="text-lg font-body mb-2">{description}</p>}
                   </div>
 
-                  <Link
+                  <SlidingUnderlineLink
                     className="text-center"
                     href={
                       link.type === 'reference'
@@ -42,7 +42,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
                     }
                   >
                     {link.label || 'Learn More'}<span className="ml-1">{">"}</span>
-                  </Link>
+                  </SlidingUnderlineLink>
                 </div>
                 {index < headerLinks.length - 1 && (
                   <VerticalDivider className="my-8" type="thick" color="highlight" />
