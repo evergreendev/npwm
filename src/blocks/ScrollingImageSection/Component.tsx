@@ -16,7 +16,7 @@ export const ScrollingImageSection: React.FC<ScrollingImageSectionProps> = ({
         {backgroundImage && typeof backgroundImage === 'object' && (
           <Media
             fill
-            imgClassName="object-cover w-full h-full"
+            imgClassName="object-cover w-full h-full background-position-center"
             resource={backgroundImage}
             priority
           />
@@ -32,10 +32,6 @@ export const ScrollingImageSection: React.FC<ScrollingImageSectionProps> = ({
           {subheader && <p className="text-4xl font-header">{subheader}</p>}
         </div>
       </div>
-
-      {/* Spacer to allow scrolling past the sticky background */}
-      <div className="h-screen" />
-      <div className="h-screen" />
     </section>
   )
 }
