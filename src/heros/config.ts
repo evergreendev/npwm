@@ -7,7 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { linkGroup } from '@/fields/linkGroup'
+import { link } from '@/fields/link'
 
 export const hero: Field = {
   name: 'hero',
@@ -16,7 +16,7 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'none',
       label: 'Type',
       options: [
         {
@@ -26,14 +26,6 @@ export const hero: Field = {
         {
           label: 'High Impact',
           value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
         },
       ],
       required: true,
@@ -53,16 +45,37 @@ export const hero: Field = {
       }),
       label: false,
     },
-    linkGroup({
-      overrides: {
-        maxRows: 2,
-      },
-    }),
+    {
+      name: 'headerLinks',
+      type: 'array',
+      maxRows: 3,
+      fields: [
+        {
+          name: 'header',
+          type: 'text',
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+        },
+        link({
+          appearances: false,
+        }),
+        {
+          name: 'anchor',
+          type: 'text',
+          admin: {
+            condition: (_, siblingData) => siblingData?.link?.type === 'reference',
+            description: 'Used to link to specific section within the page',
+          },
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
       relationTo: 'media',
       required: true,

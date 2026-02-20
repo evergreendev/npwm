@@ -158,7 +158,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact';
     richText?: {
       root: {
         type: string;
@@ -174,8 +174,10 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
-    links?:
+    headerLinks?:
       | {
+          header?: string | null;
+          description?: string | null;
           link: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
@@ -190,11 +192,11 @@ export interface Page {
                 } | null);
             url?: string | null;
             label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
           };
+          /**
+           * Used to link to specific section within the page
+           */
+          anchor?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -1124,9 +1126,11 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
-        links?:
+        headerLinks?:
           | T
           | {
+              header?: T;
+              description?: T;
               link?:
                 | T
                 | {
@@ -1135,8 +1139,8 @@ export interface PagesSelect<T extends boolean = true> {
                     reference?: T;
                     url?: T;
                     label?: T;
-                    appearance?: T;
                   };
+              anchor?: T;
               id?: T;
             };
         media?: T;
