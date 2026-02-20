@@ -8,6 +8,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
+import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -16,6 +17,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   hoursBlock: HoursBlock,
+  scrollingImageSection: ScrollingImageSection,
 }
 
 export const RenderBlocks: React.FC<{
@@ -35,8 +37,9 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
+              const isScrollingSection = blockType === 'scrollingImageSection'
               return (
-                <div className="my-16" key={index}>
+                <div className={isScrollingSection ? '' : 'my-16'} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>

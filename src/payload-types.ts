@@ -202,7 +202,15 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | HoursBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | HoursBlock
+    | ScrollingImageSection
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -794,6 +802,18 @@ export interface HoursBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScrollingImageSection".
+ */
+export interface ScrollingImageSection {
+  backgroundImage: number | Media;
+  header: string;
+  subheader?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'scrollingImageSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -1154,6 +1174,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
+        scrollingImageSection?: T | ScrollingImageSectionSelect<T>;
       };
   meta?:
     | T
@@ -1259,6 +1280,17 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface HoursBlockSelect<T extends boolean = true> {
   mode?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScrollingImageSection_select".
+ */
+export interface ScrollingImageSectionSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  header?: T;
+  subheader?: T;
   id?: T;
   blockName?: T;
 }
