@@ -37,11 +37,24 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
-              const isScrollingSection = blockType === 'scrollingImageSection'
+              const isScrollingSection = blockType === 'scrollingImageSection';
+
+              if (!isScrollingSection) {
+                return (
+                  <div key={index}>
+                    {/* @ts-expect-error there may be some mismatch between the expected types here */}
+                    <Block {...block} disableInnerContainer />
+                  </div>
+                )
+              }
+
+              const hasPrevSection = blocks[index-1]?.blockType === "scrollingImageSection";
+              const hasNextSection = blocks[index+1]?.blockType === "scrollingImageSection";
+
               return (
-                <div className={isScrollingSection ? '' : ''} key={index}>
+                <div key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
+                  <Block hasPrevSection={hasPrevSection} hasNextSection={hasNextSection} {...block} disableInnerContainer />
                 </div>
               )
             }
