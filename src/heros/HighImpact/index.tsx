@@ -23,7 +23,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
         )}
       </div>
       {headerLinks && headerLinks.length > 0 && (
-        <div className="absolute flex gap-2 flex-wrap justify-around py-10 md:px-20 bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-background text-white">
+        <div className="absolute z-20 flex gap-2 flex-wrap justify-around py-10 md:px-20 bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-background text-white">
           {headerLinks.map(({ link, header, description }, index) => {
             return (
               <React.Fragment key={index}>
