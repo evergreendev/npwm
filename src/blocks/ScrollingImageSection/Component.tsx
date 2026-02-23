@@ -2,23 +2,34 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { Media } from '@/components/Media'
-import type { ScrollingImageSection as ScrollingImageSectionProps } from '@/payload-types'
+import type {
+  ScrollingImageSection as ScrollingImageSectionProps,
+  Media as MediaType,
+} from '@/payload-types'
 import { useScrollInfo } from '@/hooks/useScrollInfo'
 
 export const ScrollingImageSection: React.FC<
-  ScrollingImageSectionProps & { hasPrevSection: boolean; hasNextSection: boolean }
-> = ({ backgroundImage, header, subheader, hasPrevSection, hasNextSection }) => {
+  ScrollingImageSectionProps & {
+    hasPrevSection: boolean
+    hasNextSection: boolean
+    prevBackgroundImage: MediaType | null
+  }
+> = ({
+  backgroundImage,
+  header,
+  subheader,
+  hasPrevSection,
+  hasNextSection,
+  prevBackgroundImage,
+}) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [startFade, setStartFade] = useState(false);
-  const { isPastTop } = useScrollInfo(sectionRef);
+  const [startFade, setStartFade] = useState(false)
+  const { isPastTop, isVisible } = useScrollInfo(sectionRef)
 
-  useEffect(() => {
-
-  }, [])
 
   return (
     <section
-      className={`w-full relative ${isPastTop && hasNextSection ? 'h-screen': 'h-[200vh]'}`}
+      className={`w-full relative ${isPastTop && hasNextSection ? 'h-screen' : 'h-[200vh]'}`}
     >
       {/* Background Image Container - Sticky */}
       <div
@@ -27,9 +38,17 @@ export const ScrollingImageSection: React.FC<
         {backgroundImage && typeof backgroundImage === 'object' && (
           <Media
             fill
-            imgClassName="object-cover w-full h-full background-position-center"
+            imgClassName={`object-cover w-full h-full background-position-center z-20
+            ${isVisible || hasNextSection ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
             resource={backgroundImage}
             priority
+          />
+        )}
+        {hasPrevSection && prevBackgroundImage && typeof prevBackgroundImage === 'object' && (
+          <Media
+            fill
+            imgClassName="object-cover w-full h-full background-position-center z-10"
+            resource={prevBackgroundImage}
           />
         )}
       </div>
