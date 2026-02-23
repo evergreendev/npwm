@@ -7,7 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { linkGroup } from '../../fields/linkGroup'
+import { linkGroup } from '@/fields/linkGroup'
 
 export const CallToAction: Block = {
   slug: 'cta',
@@ -27,6 +27,21 @@ export const CallToAction: Block = {
         },
       }),
       label: false,
+    },
+    {
+      name: 'theme',
+      type: 'select',
+      defaultValue: 'light',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
     },
     linkGroup({
       appearances: ['default', 'outline'],

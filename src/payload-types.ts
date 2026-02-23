@@ -468,6 +468,7 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
+  theme?: ('light' | 'dark') | null;
   links?:
     | {
         link: {
@@ -1196,6 +1197,7 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
   richText?: T;
+  theme?: T;
   links?:
     | T
     | {
