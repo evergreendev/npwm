@@ -94,15 +94,16 @@ export const ReviewsBlock: React.FC<ReviewsBlockProps & { id?: string }> = async
 
   return (
     <div className="bg-background py-12 px-8 relative" id={`block-${id}`}>
-      <div className="container relative">
+      <div className="relative max-w-5xl mx-auto">
         {headline && (
-          <div className="mb-4">
+          <div className="mb-8">
             <h2 className="mb-2 text-5xl text-light">{headline}</h2>
-            <Underline className="w-[calc(100%+23vw)]" />
+            <Underline />
           </div>
         )}
         <div className="relative">
           <Carousel
+            controlsClassName="flex justify-between absolute top-1/2 translate-y-[-50%] bottom-0 z-10 w-full"
             slides={docs.map((review, idx) => (
               <article
                 key={review.id || idx}

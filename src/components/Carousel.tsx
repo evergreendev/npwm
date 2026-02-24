@@ -1,5 +1,6 @@
 "use client"
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
+import { PrevButton, NextButton } from './CarouselButtons'
 
 type PickerVariant = 'none' | 'grouped' | 'tabs'
 type ContainerRole = 'region' | 'group'
@@ -357,7 +358,7 @@ export function Carousel({
       role={containerRole}
       aria-roledescription="carousel"
       {...containerLabelProps}
-      className={className}
+      className={className + " px-16 relative"}
       style={styles.root}
       onFocusCapture={onFocusCapture}
       onBlurCapture={onBlurCapture}
@@ -376,13 +377,9 @@ export function Carousel({
           </button>
         )}
 
-        <button type="button" onClick={goPrev} aria-label="Previous slide">
-          Prev
-        </button>
+        <PrevButton onClick={goPrev} />
 
-        <button type="button" onClick={goNext} aria-label="Next slide">
-          Next
-        </button>
+        <NextButton onClick={goNext} />
 
         {renderPicker()}
       </div>
@@ -391,7 +388,7 @@ export function Carousel({
       <div
         id={viewportId}
         style={styles.viewport}
-        className={viewportClassName}
+        className={viewportClassName+" max-w-prose mx-auto"}
         aria-live={ariaLive}
         aria-atomic="false"
       >
