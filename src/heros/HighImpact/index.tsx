@@ -16,14 +16,14 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
   })
 
   return (
-    <div className="relative flex wrap items-center justify-center text-white" data-theme="light">
+    <div className="relative flex wrap items-center justify-center text-white py-28 md:py-0" data-theme="light">
       <div className="select-none w-full aspect-video">
         {media && typeof media === 'object' && (
           <Media fill imgClassName="-z-10 object-cover w-full" priority resource={media} />
         )}
       </div>
       {headerLinks && headerLinks.length > 0 && (
-        <div className="absolute z-20 flex gap-2 flex-wrap justify-around py-10 md:px-20 bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-background text-white">
+        <div className="lg:absolute z-20 flex gap-2 flex-wrap justify-around py-10 md:px-20 bottom-0 lg:left-1/2 lg:translate-y-1/2 lg:-translate-x-1/2 bg-background text-white">
           {headerLinks.map(({ link, header, description }, index) => {
             return (
               <React.Fragment key={index}>
