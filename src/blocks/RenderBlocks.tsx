@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
+import { ReviewsBlock } from '@/blocks/Reviews/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +19,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   hoursBlock: HoursBlock,
   scrollingImageSection: ScrollingImageSection,
+  reviewsBlock: ReviewsBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -37,29 +39,32 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
-              const isScrollingSection = blockType === 'scrollingImageSection';
+              const isScrollingSection = blockType === 'scrollingImageSection'
 
               if (!isScrollingSection) {
                 return (
                   <div key={index}>
-                    {/* @ts-expect-error there may be some mismatch between the expected types here */}
                     <Block {...block} disableInnerContainer />
                   </div>
                 )
               }
 
-              const hasPrevSection = blocks[index-1]?.blockType === "scrollingImageSection";
-              const hasNextSection = blocks[index+1]?.blockType === "scrollingImageSection";
-              {/* @ts-expect-error We know backgroundImage exists here because hasPrevSection is true*/}
-              const prevBackground = hasPrevSection ? blocks[index - 1].backgroundImage : null;
-              {/* @ts-expect-error We know backgroundImage exists here because hasNextSection is true*/}
-              const nextBackground = hasNextSection ? blocks[index + 1].backgroundImage : null;
-
+              const hasPrevSection = blocks[index - 1]?.blockType === 'scrollingImageSection'
+              const hasNextSection = blocks[index + 1]?.blockType === 'scrollingImageSection'
+              {/* @ts-expect-error We know backgroundImage exists*/}
+              const prevBackground = hasPrevSection ? blocks[index - 1].backgroundImage : null
+              {/* @ts-expect-error We know backgroundImage exists*/}
+              const nextBackground = hasNextSection ? blocks[index + 1].backgroundImage : null
 
               return (
                 <div key={index}>
-                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block prevBackgroundImage={prevBackground} nextBackgroundImage={nextBackground} hasPrevSection={hasPrevSection} hasNextSection={hasNextSection} {...block} disableInnerContainer
+                  <Block
+                    prevBackgroundImage={prevBackground}
+                    nextBackgroundImage={nextBackground}
+                    hasPrevSection={hasPrevSection}
+                    hasNextSection={hasNextSection}
+                    {...block}
+                    disableInnerContainer
                   />
                 </div>
               )

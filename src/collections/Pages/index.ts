@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { HoursBlock } from '@/blocks/HoursBlock/config'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/config'
+import { Reviews as ReviewsBlock } from '@/blocks/Reviews/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
@@ -82,6 +83,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 HoursBlock,
                 ScrollingImageSection,
+                ReviewsBlock,
               ],
               required: true,
               admin: {

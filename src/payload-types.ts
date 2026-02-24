@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     hours: Hour;
+    reviews: Review;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -96,6 +97,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     hours: HoursSelect<false> | HoursSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -210,6 +212,7 @@ export interface Page {
     | FormBlock
     | HoursBlock
     | ScrollingImageSection
+    | ReviewsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -815,6 +818,20 @@ export interface ScrollingImageSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewsBlock".
+ */
+export interface ReviewsBlock {
+  headline?: string | null;
+  /**
+   * Maximum number of recent reviews to display
+   */
+  limit?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reviewsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -857,6 +874,32 @@ export interface Hour {
    * Lower numbers appear first
    */
   sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: number;
+  reviewerName: string;
+  platform?: ('facebook' | 'google' | 'tripadvisor' | 'yelp') | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1075,6 +1118,10 @@ export interface PayloadLockedDocument {
         value: number | Hour;
       } | null)
     | ({
+        relationTo: 'reviews';
+        value: number | Review;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1176,6 +1223,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
         scrollingImageSection?: T | ScrollingImageSectionSelect<T>;
+        reviewsBlock?: T | ReviewsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1293,6 +1341,16 @@ export interface ScrollingImageSectionSelect<T extends boolean = true> {
   backgroundImage?: T;
   header?: T;
   subheader?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewsBlock_select".
+ */
+export interface ReviewsBlockSelect<T extends boolean = true> {
+  headline?: T;
+  limit?: T;
   id?: T;
   blockName?: T;
 }
@@ -1475,6 +1533,17 @@ export interface HoursSelect<T extends boolean = true> {
   content?: T;
   isActive?: T;
   sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  reviewerName?: T;
+  platform?: T;
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }
