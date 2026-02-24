@@ -52,12 +52,14 @@ export const RenderBlocks: React.FC<{
               const hasNextSection = blocks[index+1]?.blockType === "scrollingImageSection";
               {/* @ts-expect-error We know backgroundImage exists here because hasPrevSection is true*/}
               const prevBackground = hasPrevSection ? blocks[index - 1].backgroundImage : null;
+              {/* @ts-expect-error We know backgroundImage exists here because hasNextSection is true*/}
+              const nextBackground = hasNextSection ? blocks[index + 1].backgroundImage : null;
 
 
               return (
                 <div key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block prevBackgroundImage={prevBackground} hasPrevSection={hasPrevSection} hasNextSection={hasNextSection} {...block} disableInnerContainer
+                  <Block prevBackgroundImage={prevBackground} nextBackgroundImage={nextBackground} hasPrevSection={hasPrevSection} hasNextSection={hasNextSection} {...block} disableInnerContainer
                   />
                 </div>
               )

@@ -13,6 +13,7 @@ export const ScrollingImageSection: React.FC<
     hasPrevSection: boolean
     hasNextSection: boolean
     prevBackgroundImage: MediaType | null
+    nextBackgroundImage: MediaType | null
   }
 > = ({
   backgroundImage,
@@ -21,14 +22,22 @@ export const ScrollingImageSection: React.FC<
   hasPrevSection,
   hasNextSection,
   prevBackgroundImage,
+  nextBackgroundImage,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [startFade, setStartFade] = useState(false)
+  const [initialFadeinIsComplete, setInitialFadeinIsComplete] = useState(hasPrevSection);
   const { isPastTop, isVisible } = useScrollInfo(sectionRef)
+  const containerRef = useRef<HTMLElement>(null)
+  const containerScrollInfo = useScrollInfo(containerRef);
 
+  useEffect(() => {
+    if (!isVisible) return;
+    setInitialFadeinIsComplete(true);
+  }, [isVisible])
 
   return (
     <section
+      ref={containerRef}
       className={`w-full relative ${isPastTop && hasNextSection ? 'h-screen' : 'h-[200vh]'}`}
     >
       {/* Background Image Container - Sticky */}
@@ -39,7 +48,7 @@ export const ScrollingImageSection: React.FC<
           <Media
             fill
             imgClassName={`object-cover w-full h-full background-position-center z-20
-            ${isVisible || hasNextSection ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+            ${containerScrollInfo.isVisible || !initialFadeinIsComplete ? 'opacity-100' : 'opacity-0'}  ${initialFadeinIsComplete ? 'duration-1000 transition-opacity' : 'duration-0'}`}
             resource={backgroundImage}
             priority
           />
@@ -47,8 +56,16 @@ export const ScrollingImageSection: React.FC<
         {hasPrevSection && prevBackgroundImage && typeof prevBackgroundImage === 'object' && (
           <Media
             fill
-            imgClassName="object-cover w-full h-full background-position-center z-10"
+            imgClassName={`object-cover w-full h-full background-position-center z-10
+              ${!isPastTop ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
             resource={prevBackgroundImage}
+          />
+        )}
+        {hasNextSection && nextBackgroundImage && typeof nextBackgroundImage === 'object' && (
+          <Media
+            fill
+            imgClassName="object-cover w-full h-full background-position-center z-0"
+            resource={nextBackgroundImage}
           />
         )}
       </div>
