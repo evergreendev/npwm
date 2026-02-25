@@ -14,9 +14,9 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, th
     >
       <div className="container">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-          <div className="flex items-center max-w-7xl mx-auto">
+          <div className="flex max-w-7xl">
             {richText && (
-              <RichText className="mb-0" data={richText} enableGutter={false} />
+              <RichText className="mb-0 prose-h2:font-normal prose-h2:text-4xl prose-headings:mb-2" data={richText} enableGutter={false} />
             )}
           </div>
           <div className="flex flex-col gap-8">
