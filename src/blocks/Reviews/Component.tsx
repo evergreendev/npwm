@@ -103,6 +103,8 @@ export const ReviewsBlock: React.FC<ReviewsBlockProps & { id?: string }> = async
         )}
         <div className="relative">
           <Carousel
+            className=" px-16 relative"
+            viewportClassName="max-w-prose mx-auto"
             controlsClassName="flex justify-between absolute top-1/2 translate-y-[-50%] bottom-0 z-10 w-full"
             slides={docs.map((review, idx) => (
               <article

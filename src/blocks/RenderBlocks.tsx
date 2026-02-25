@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 import { ReviewsBlock } from '@/blocks/Reviews/Component'
+import { CarouselBlock } from '@/blocks/Carousel/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   hoursBlock: HoursBlock,
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,
+  carousel: CarouselBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -42,8 +44,10 @@ export const RenderBlocks: React.FC<{
               const isScrollingSection = blockType === 'scrollingImageSection'
 
               if (!isScrollingSection) {
+
                 return (
                   <div key={index}>
+                    {/*@ts-expect-error Carousel not recognizing disable inner container*/}
                     <Block {...block} disableInnerContainer />
                   </div>
                 )
@@ -56,16 +60,12 @@ export const RenderBlocks: React.FC<{
               {/* @ts-expect-error We know backgroundImage exists*/}
               const nextBackground = hasNextSection ? blocks[index + 1].backgroundImage : null
 
+              const props = {...block, prevBackgroundImage: prevBackground, nextBackgroundImage: nextBackground, hasPrevSection, hasNextSection}
+
               return (
                 <div key={index}>
-                  <Block
-                    prevBackgroundImage={prevBackground}
-                    nextBackgroundImage={nextBackground}
-                    hasPrevSection={hasPrevSection}
-                    hasNextSection={hasNextSection}
-                    {...block}
-                    disableInnerContainer
-                  />
+                  {/*@ts-expect-error Carousel not recognizing disable inner container*/}
+                  <Block {...props} />
                 </div>
               )
             }

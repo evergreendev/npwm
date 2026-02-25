@@ -358,7 +358,7 @@ export function Carousel({
       role={containerRole}
       aria-roledescription="carousel"
       {...containerLabelProps}
-      className={className + " px-16 relative"}
+      className={className}
       style={styles.root}
       onFocusCapture={onFocusCapture}
       onBlurCapture={onBlurCapture}
@@ -366,7 +366,7 @@ export function Carousel({
       onMouseLeave={onMouseLeave}
     >
       {/* Controls: rotation control should be first in tab order inside the carousel */}
-      <div className={controlsClassName} style={styles.controlsRow}>
+      <div className={controlsClassName + " z-50"} style={styles.controlsRow}>
         {autoRotate && (
           <button
             type="button"
@@ -388,7 +388,7 @@ export function Carousel({
       <div
         id={viewportId}
         style={styles.viewport}
-        className={viewportClassName+" max-w-prose mx-auto"}
+        className={viewportClassName}
         aria-live={ariaLive}
         aria-atomic="false"
       >
@@ -412,7 +412,7 @@ export function Carousel({
                 {...(pickerVariant === 'tabs' ? {} : { 'aria-roledescription': 'slide' })}
                 {...slideLabelProps}
                 aria-hidden={active ? 'false' : 'true'}
-                inert={active}
+                inert={!active}
                 tabIndex={pickerVariant === 'tabs' ? 0 : -1}
                 style={styles.slide}
               >

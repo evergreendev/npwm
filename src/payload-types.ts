@@ -213,6 +213,7 @@ export interface Page {
     | HoursBlock
     | ScrollingImageSection
     | ReviewsBlock
+    | CarouselBlock
   )[];
   meta?: {
     title?: string | null;
@@ -832,6 +833,54 @@ export interface ReviewsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  slides?:
+    | {
+        image: number | Media;
+        title: string;
+        subtitle?: string | null;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        hasLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -1224,6 +1273,7 @@ export interface PagesSelect<T extends boolean = true> {
         hoursBlock?: T | HoursBlockSelect<T>;
         scrollingImageSection?: T | ScrollingImageSectionSelect<T>;
         reviewsBlock?: T | ReviewsBlockSelect<T>;
+        carousel?: T | CarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1351,6 +1401,33 @@ export interface ScrollingImageSectionSelect<T extends boolean = true> {
 export interface ReviewsBlockSelect<T extends boolean = true> {
   headline?: T;
   limit?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  slides?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        subtitle?: T;
+        content?: T;
+        hasLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
