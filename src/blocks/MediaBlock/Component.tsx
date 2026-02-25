@@ -15,6 +15,7 @@ type Props = MediaBlockProps & {
   enableGutter?: boolean
   imgClassName?: string
   staticImage?: StaticImageData
+  videoClassName?: string
   disableInnerContainer?: boolean
 }
 
@@ -23,9 +24,11 @@ export const MediaBlock: React.FC<Props> = (props) => {
     captionClassName,
     className,
     enableGutter = true,
+    fullWidth,
     imgClassName,
     media,
     staticImage,
+    videoClassName,
     disableInnerContainer,
   } = props
 
@@ -37,16 +40,33 @@ export const MediaBlock: React.FC<Props> = (props) => {
       className={cn(
         '',
         {
-          container: enableGutter,
+          container: enableGutter && !fullWidth,
         },
         className,
       )}
     >
       {(media || staticImage) && (
         <Media
-          imgClassName={cn('', imgClassName)}
+          fill={fullWidth || false}
+          className={cn({
+            'h-screen relative': fullWidth,
+          })}
+          imgClassName={cn(
+            '',
+            {
+              'object-cover': fullWidth,
+            },
+            imgClassName,
+          )}
           resource={media}
           src={staticImage}
+          videoClassName={cn(
+            '',
+            {
+              'h-screen w-full object-cover': fullWidth,
+            },
+            videoClassName,
+          )}
         />
       )}
       {caption && (

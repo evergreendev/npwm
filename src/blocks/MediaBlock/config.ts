@@ -10,5 +10,10 @@ export const MediaBlock: Block = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'fullWidth',
+      type: 'checkbox',
+      defaultValue: false,
+    },
   ],
 }
