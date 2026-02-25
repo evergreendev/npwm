@@ -71,15 +71,15 @@ export const ScrollingImageSection: React.FC<
       </div>
 
       {/* Scrolling Content */}
-      <div
+{      <div
         ref={sectionRef}
         className={`relative flex flex-col items-center justify-center z-10 pointer-events-none`}
       >
         <div className="lg:min-w-3xl max-w-full px-6 py-8 text-center text-text-primary bg-light pointer-events-auto">
-          <h2 className="text-4xl font-bold font-header">{header}</h2>
+          {header && <h2 className="text-4xl font-bold font-header">{header}</h2>}
           {subheader && <p className="text-4xl font-header">{subheader}</p>}
         </div>
-      </div>
+      </div>}
     </section>
   )
 }

@@ -810,7 +810,7 @@ export interface HoursBlock {
  */
 export interface ScrollingImageSection {
   backgroundImage: number | Media;
-  header: string;
+  header?: string | null;
   subheader?: string | null;
   id?: string | null;
   blockName?: string | null;
