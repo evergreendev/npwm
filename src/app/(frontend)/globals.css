@@ -48,6 +48,7 @@
   --font-mono: var(--font-inter);
   --font-sans: var(--font-inter);
   --color-background: #0f172a;
+  --color-dark-background: #02071b;
   --color-background-secondary: #1f2937;
   --color-light: #f3f6f9;
   --color-text-primary: #2e4057;

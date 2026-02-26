@@ -11,7 +11,7 @@ export const CarouselBlock: React.FC<Props> = ({ slides }) => {
   if (!slides || slides.length === 0) return null
 
   return (
-    <div className="bg-background text-white py-0 overflow-hidden">
+    <div className="bg-background-secondary text-white py-0 overflow-hidden">
       <Carousel
         ariaLabel="Image and Text Carousel"
         className="w-full relative"
@@ -19,9 +19,9 @@ export const CarouselBlock: React.FC<Props> = ({ slides }) => {
         slides={slides.map((slide, index) => ({
           label: slide.title || `Slide ${index + 1}`,
           content: (
-            <div key={index} className="flex flex-col md:flex-row min-h-[600px] w-full">
+            <div key={index} className="flex flex-col md:flex-row min-h-150 w-full">
               {/* Left Side: Image */}
-              <div className="relative w-full md:w-1/2 min-h-[300px] md:min-h-full">
+              <div className="relative w-full md:w-1/2 min-h-75 md:min-h-full">
                 {slide.image && typeof slide.image === 'object' && (
                   <Media fill imgClassName="object-cover w-full h-full" resource={slide.image} />
                 )}
