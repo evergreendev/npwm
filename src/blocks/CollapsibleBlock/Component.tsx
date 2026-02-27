@@ -46,7 +46,7 @@ export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: st
             <div
               key={item.id || index}
               style={{ backgroundColor: bgColor }}
-              className="w-full py-16 md:py-24 text-text-primary"
+              className="w-full text-text-primary"
             >
               <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
                 <div className={cn('flex flex-col gap-6 justify-center', !isEven && 'md:order-2')}>
@@ -55,10 +55,8 @@ export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: st
                 </div>
 
                 <div className={cn(
-                  'relative flex w-full min-h-50',
-                  isEven
-                    ? 'md:order-2 md:-mr-[calc((100vw-min(100vw-4rem,86rem))/2)]'
-                    : 'md:order-1 md:-ml-[calc((100vw-min(100vw-4rem,86rem))/2)]'
+                  'relative flex w-full min-h-100',
+                  isEven ? 'md:order-2' : 'md:order-1'
                 )}>
                   {item.images?.map((img, imgIndex) => (
                     <div key={img.id || imgIndex} className="relative flex-1 h-full">
