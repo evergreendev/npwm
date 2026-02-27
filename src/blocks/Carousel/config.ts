@@ -1,5 +1,13 @@
 import type { Block } from 'payload'
+import {
+  BlocksFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
+import { UnderlineBlock } from '@/blocks/Underline/config'
 
 export const Carousel: Block = {
   slug: 'carousel',
@@ -18,7 +26,6 @@ export const Carousel: Block = {
         {
           name: 'title',
           type: 'text',
-          required: true,
         },
         {
           name: 'subtitle',
@@ -27,7 +34,17 @@ export const Carousel: Block = {
         {
           name: 'content',
           type: 'richText',
-          required: true,
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                BlocksFeature({ blocks: [UnderlineBlock] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+              ]
+            },
+          }),
         },
         {
           name: 'hasLink',
@@ -44,6 +61,48 @@ export const Carousel: Block = {
           },
         }),
       ],
+    },
+    {
+      name: 'hasStaticSection',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Add Static Section',
+    },
+    {
+      name: 'staticSectionContent',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            BlocksFeature({ blocks: [UnderlineBlock] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      admin: {
+        condition: (_, siblingData) => siblingData?.hasStaticSection,
+      },
+    },
+    {
+      name: 'staticSectionSide',
+      type: 'select',
+      defaultValue: 'left',
+      options: [
+        {
+          label: 'Left',
+          value: 'left',
+        },
+        {
+          label: 'Right',
+          value: 'right',
+        },
+      ],
+      admin: {
+        condition: (_, siblingData) => siblingData?.hasStaticSection,
+      },
     },
   ],
 }

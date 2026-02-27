@@ -1017,9 +1017,9 @@ export interface CarouselBlock {
   slides?:
     | {
         image: number | Media;
-        title: string;
+        title?: string | null;
         subtitle?: string | null;
-        content: {
+        content?: {
           root: {
             type: string;
             children: {
@@ -1033,7 +1033,7 @@ export interface CarouselBlock {
             version: number;
           };
           [k: string]: unknown;
-        };
+        } | null;
         hasLink?: boolean | null;
         link?: {
           type?: ('reference' | 'custom') | null;
@@ -1053,6 +1053,23 @@ export interface CarouselBlock {
         id?: string | null;
       }[]
     | null;
+  hasStaticSection?: boolean | null;
+  staticSectionContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  staticSectionSide?: ('left' | 'right') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'carousel';
@@ -1658,6 +1675,9 @@ export interface CarouselBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  hasStaticSection?: T;
+  staticSectionContent?: T;
+  staticSectionSide?: T;
   id?: T;
   blockName?: T;
 }
