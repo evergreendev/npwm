@@ -4,6 +4,7 @@ import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { Archive } from '@/blocks/ArchiveBlock/config'
 import { CallToAction } from '@/blocks/CallToAction/config'
+import { CollapsibleBlock } from '@/blocks/CollapsibleBlock/config'
 import { Content } from '@/blocks/Content/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
@@ -82,6 +83,7 @@ export const Exhibits: CollectionConfig<'exhibits'> = {
                 Content,
                 MediaBlock,
                 VideoBlock,
+                CollapsibleBlock,
                 Archive,
                 FormBlock,
                 HoursBlock,

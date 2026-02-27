@@ -7,6 +7,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { CollapsibleBlock } from '@/blocks/CollapsibleBlock/Component'
 import { VideoBlock } from '@/blocks/VideoBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
@@ -20,6 +21,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   videoBlock: VideoBlock,
+  collapsibleBlock: CollapsibleBlock,
   hoursBlock: HoursBlock,
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,

@@ -211,6 +211,7 @@ export interface Page {
     | ContentBlock
     | MediaBlock
     | VideoBlock
+    | CollapsibleBlock
     | ArchiveBlock
     | FormBlock
     | HoursBlock
@@ -580,6 +581,57 @@ export interface VideoBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CollapsibleBlock".
+ */
+export interface CollapsibleBlock {
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  items?:
+    | {
+        title: string;
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        images?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'collapsibleBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
@@ -695,6 +747,7 @@ export interface Exhibit {
     | ContentBlock
     | MediaBlock
     | VideoBlock
+    | CollapsibleBlock
     | ArchiveBlock
     | FormBlock
     | HoursBlock
@@ -1398,6 +1451,7 @@ export interface PagesSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
+        collapsibleBlock?: T | CollapsibleBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
@@ -1489,6 +1543,28 @@ export interface VideoBlockSelect<T extends boolean = true> {
   videoUpload?: T;
   videoLink?: T;
   thumbnail?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CollapsibleBlock_select".
+ */
+export interface CollapsibleBlockSelect<T extends boolean = true> {
+  introContent?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1653,6 +1729,7 @@ export interface ExhibitsSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
+        collapsibleBlock?: T | CollapsibleBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
