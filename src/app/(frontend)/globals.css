@@ -179,7 +179,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-light text-foreground min-h-screen flex flex-col font-body;
+    @apply bg-light text-foreground min-h-screen flex flex-col font-body overflow-x-hidden;
   }
 }
 

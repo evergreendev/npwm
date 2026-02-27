@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 export const UnderlineBlock: Block = {
   slug: 'underline',
+  key: 'underline',
   interfaceName: 'UnderlineBlock',
   fields: [
     {
@@ -33,6 +34,12 @@ export const UnderlineBlock: Block = {
           value: 'left',
         },
       ],
+    },
+    {
+      name: 'fullWidth',
+      type: 'checkbox',
+      label: 'Full Width (Go to edge of screen)',
+      defaultValue: false,
     },
     {
       name: 'light',

@@ -2221,6 +2221,7 @@ export interface TaskSchedulePublish {
 export interface UnderlineBlock {
   color?: ('default' | 'yellow') | null;
   direction?: ('right' | 'left') | null;
+  fullWidth?: boolean | null;
   light?: boolean | null;
   id?: string | null;
   blockName?: string | null;

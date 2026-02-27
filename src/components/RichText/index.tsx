@@ -62,6 +62,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
         reverse={node.fields.direction === 'left'}
         light={node.fields.light}
         color={node.fields.color}
+        fullWidth={node.fields.fullWidth}
       />
     ),
   },
