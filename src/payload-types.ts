@@ -2216,6 +2216,18 @@ export interface TaskSchedulePublish {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "UnderlineBlock".
+ */
+export interface UnderlineBlock {
+  color?: ('default' | 'yellow') | null;
+  direction?: ('right' | 'left') | null;
+  light?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'underline';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
