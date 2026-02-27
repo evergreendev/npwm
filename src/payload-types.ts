@@ -210,6 +210,7 @@ export interface Page {
     | CallToActionBlock
     | ContentBlock
     | MediaBlock
+    | VideoBlock
     | ArchiveBlock
     | FormBlock
     | HoursBlock
@@ -566,6 +567,19 @@ export interface MediaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  videoType?: ('upload' | 'link') | null;
+  videoUpload?: (number | null) | Media;
+  videoLink?: string | null;
+  thumbnail?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
@@ -680,6 +694,7 @@ export interface Exhibit {
     | CallToActionBlock
     | ContentBlock
     | MediaBlock
+    | VideoBlock
     | ArchiveBlock
     | FormBlock
     | HoursBlock
@@ -1382,6 +1397,7 @@ export interface PagesSelect<T extends boolean = true> {
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
+        videoBlock?: T | VideoBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
@@ -1461,6 +1477,18 @@ export interface ContentBlockSelect<T extends boolean = true> {
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
   fullWidth?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  videoType?: T;
+  videoUpload?: T;
+  videoLink?: T;
+  thumbnail?: T;
   id?: T;
   blockName?: T;
 }
@@ -1624,6 +1652,7 @@ export interface ExhibitsSelect<T extends boolean = true> {
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
+        videoBlock?: T | VideoBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;

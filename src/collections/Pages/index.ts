@@ -7,6 +7,7 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { HoursBlock } from '@/blocks/HoursBlock/config'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/config'
 import { Reviews as ReviewsBlock } from '@/blocks/Reviews/config'
@@ -80,6 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CallToAction,
                 Content,
                 MediaBlock,
+                VideoBlock,
                 Archive,
                 FormBlock,
                 HoursBlock,

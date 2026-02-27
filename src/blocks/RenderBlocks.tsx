@@ -7,6 +7,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { VideoBlock } from '@/blocks/VideoBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 import { ReviewsBlock } from '@/blocks/Reviews/Component'
@@ -18,6 +19,7 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  videoBlock: VideoBlock,
   hoursBlock: HoursBlock,
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,
