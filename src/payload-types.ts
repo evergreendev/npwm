@@ -215,6 +215,7 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | HoursBlock
+    | LatestBlogBlock
     | ScrollingImageSection
     | ReviewsBlock
     | CarouselBlock
@@ -1076,6 +1077,32 @@ export interface CarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestBlogBlock".
+ */
+export interface LatestBlogBlock {
+  headline: string;
+  showArchiveLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'latestBlog';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -1472,6 +1499,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         hoursBlock?: T | HoursBlockSelect<T>;
+        latestBlog?: T | LatestBlogBlockSelect<T>;
         scrollingImageSection?: T | ScrollingImageSectionSelect<T>;
         reviewsBlock?: T | ReviewsBlockSelect<T>;
         carousel?: T | CarouselBlockSelect<T>;
@@ -1627,6 +1655,25 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface HoursBlockSelect<T extends boolean = true> {
   mode?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestBlogBlock_select".
+ */
+export interface LatestBlogBlockSelect<T extends boolean = true> {
+  headline?: T;
+  showArchiveLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -10,6 +10,7 @@ import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { HoursBlock } from '@/blocks/HoursBlock/config'
+import { LatestBlog } from '@/blocks/LatestBlog/config'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/config'
 import { Reviews as ReviewsBlock } from '@/blocks/Reviews/config'
 import { Carousel as CarouselBlock } from '@/blocks/Carousel/config'
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Archive,
                 FormBlock,
                 HoursBlock,
+                LatestBlog,
                 ScrollingImageSection,
                 ReviewsBlock,
                 CarouselBlock,

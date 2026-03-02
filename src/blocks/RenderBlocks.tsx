@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CollapsibleBlock } from '@/blocks/CollapsibleBlock/Component'
 import { VideoBlock } from '@/blocks/VideoBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
+import { LatestBlogBlock } from '@/blocks/LatestBlog/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 import { ReviewsBlock } from '@/blocks/Reviews/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
@@ -23,6 +24,7 @@ const blockComponents = {
   videoBlock: VideoBlock,
   collapsibleBlock: CollapsibleBlock,
   hoursBlock: HoursBlock,
+  latestBlog: LatestBlogBlock,
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,
   carousel: CarouselBlock,
