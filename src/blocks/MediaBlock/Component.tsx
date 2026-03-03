@@ -49,7 +49,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
         <Media
           fill={fullWidth || false}
           className={cn({
-            'h-screen relative': fullWidth,
+            'h-[66vw] relative': fullWidth,
           })}
           imgClassName={cn(
             '',
@@ -63,7 +63,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
           videoClassName={cn(
             '',
             {
-              'h-screen w-full object-cover': fullWidth,
+              'h-[66vw] w-full object-cover': fullWidth,
             },
             videoClassName,
           )}

@@ -35,7 +35,7 @@ export const CarouselBlock: React.FC<Props> = ({
         return {
           label: slide.title || `Slide ${index + 1}`,
           content: (
-            <div key={index} className="flex flex-col md:flex-row min-h-150 w-full">
+            <div key={index} className="flex flex-col md:flex-row md:min-h-150 w-full">
               {/* Left Side: Image */}
               <div
                 className={cn(
