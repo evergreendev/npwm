@@ -10,7 +10,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, th
 
   return (
     <div
-      className={`${isDark ? 'bg-background text-light' : 'bg-light text-background'} py-12`}
+      className={`${isDark ? 'bg-dark-background text-light' : 'bg-light text-background'} py-12`}
     >
       <div className="container">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
