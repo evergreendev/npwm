@@ -10,6 +10,32 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'facebook',
+      type: 'text',
+      label: 'Facebook URL',
+    },
+    {
+      name: 'instagram',
+      type: 'text',
+      label: 'Instagram URL',
+    },
+    {
+      name: 'youtube',
+      type: 'text',
+      label: 'YouTube URL',
+    },
+    link({
+      appearances: false,
+      overrides: {
+        name: 'rightLink',
+      },
+    }),
+    {
       name: 'navItems',
       type: 'array',
       fields: [
