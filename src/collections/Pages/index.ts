@@ -6,6 +6,7 @@ import { Archive } from '@/blocks/ArchiveBlock/config'
 import { CallToAction } from '@/blocks/CallToAction/config'
 import { CollapsibleBlock } from '@/blocks/CollapsibleBlock/config'
 import { Content } from '@/blocks/Content/config'
+import { Iframe as IframeBlock } from '@/blocks/IframeBlock/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
@@ -82,6 +83,7 @@ export const Pages: CollectionConfig<'pages'> = {
               blocks: [
                 CallToAction,
                 Content,
+                IframeBlock,
                 MediaBlock,
                 VideoBlock,
                 CollapsibleBlock,

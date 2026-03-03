@@ -209,6 +209,7 @@ export interface Page {
   layout: (
     | CallToActionBlock
     | ContentBlock
+    | IframeBlock
     | MediaBlock
     | VideoBlock
     | CollapsibleBlock
@@ -555,6 +556,20 @@ export interface ContentBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IframeBlock".
+ */
+export interface IframeBlock {
+  src: string;
+  title: string;
+  height?: number | null;
+  allowFullScreen?: boolean | null;
+  frameBorder?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'iframe';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1493,6 +1508,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
+        iframe?: T | IframeBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
         collapsibleBlock?: T | CollapsibleBlockSelect<T>;
@@ -1566,6 +1582,19 @@ export interface ContentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IframeBlock_select".
+ */
+export interface IframeBlockSelect<T extends boolean = true> {
+  src?: T;
+  title?: T;
+  height?: T;
+  allowFullScreen?: T;
+  frameBorder?: T;
   id?: T;
   blockName?: T;
 }
@@ -2399,6 +2428,41 @@ export interface UnderlineBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'underline';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HoursAddressLinksBlock".
+ */
+export interface HoursAddressLinksBlock {
+  address: string;
+  googleMapsUrl: string;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('destructive' | 'secondary') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hoursAddressLinks';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

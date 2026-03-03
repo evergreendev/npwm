@@ -16,18 +16,28 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 import type {
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
+  IframeBlock as IframeBlockProps,
+  HoursAddressLinksBlock as HoursAddressLinksBlockProps,
   MediaBlock as MediaBlockProps,
   UnderlineBlock as UnderlineBlockProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { IframeBlock } from '@/blocks/IframeBlock/Component'
+import { HoursAddressLinksBlock } from '@/blocks/HoursAddressLinks/Component'
 import { Underline } from '@/components/Underline'
 import { cn } from '@/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | UnderlineBlockProps
+      | CTABlockProps
+      | IframeBlockProps
+      | HoursAddressLinksBlockProps
+      | MediaBlockProps
+      | BannerBlockProps
+      | CodeBlockProps
+      | UnderlineBlockProps
     >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -56,6 +66,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    iframe: ({ node }) => <IframeBlock {...node.fields} />,
+    hoursAddressLinks: ({ node }) => <HoursAddressLinksBlock {...node.fields} />,
     underline: ({ node }) => (
       <Underline
         className="my-4"

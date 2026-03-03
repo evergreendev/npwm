@@ -4,7 +4,7 @@ import RichText from '@/components/RichText'
 
 import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
-import { CMSLink } from '../../components/Link'
+import { CMSLink } from '@/components/Link'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns } = props
@@ -31,7 +31,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 })}
                 key={index}
               >
-                {richText && <RichText data={richText} enableGutter={false} />}
+                {richText && <RichText className={'text-text-primary prose-h2:text-5xl prose-h3:text-2xl prose-h3:font-normal'} data={richText} enableGutter={false} />}
 
                 {enableLink && <CMSLink {...link} />}
               </div>

@@ -10,6 +10,8 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CollapsibleBlock } from '@/blocks/CollapsibleBlock/Component'
 import { VideoBlock } from '@/blocks/VideoBlock/Component'
 import { HoursBlock } from '@/blocks/HoursBlock/Component'
+import { IframeBlock } from '@/blocks/IframeBlock/Component'
+import { HoursAddressLinksBlock } from '@/blocks/HoursAddressLinks/Component'
 import { LatestBlogBlock } from '@/blocks/LatestBlog/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 import { ReviewsBlock } from '@/blocks/Reviews/Component'
@@ -24,6 +26,8 @@ const blockComponents = {
   videoBlock: VideoBlock,
   collapsibleBlock: CollapsibleBlock,
   hoursBlock: HoursBlock,
+  hoursAddressLinks: HoursAddressLinksBlock,
+  iframe: IframeBlock,
   latestBlog: LatestBlogBlock,
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,

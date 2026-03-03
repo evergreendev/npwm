@@ -5,9 +5,12 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  BlocksFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { Iframe as IframeBlock } from '../IframeBlock/config'
+import { HoursAddressLinks as HoursAddressLinksBlock } from '../HoursAddressLinks/config'
 
 const columnFields: Field[] = [
   {
@@ -41,6 +44,7 @@ const columnFields: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          BlocksFeature({ blocks: [IframeBlock, HoursAddressLinksBlock] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]
