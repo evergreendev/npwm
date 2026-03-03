@@ -2,7 +2,6 @@ import type { Block } from 'payload'
 
 export const UnderlineBlock: Block = {
   slug: 'underline',
-  key: 'underline',
   interfaceName: 'UnderlineBlock',
   fields: [
     {

@@ -66,15 +66,16 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    /*@ts-expect-error Iframe problems*/
     iframe: ({ node }) => <IframeBlock {...node.fields} />,
     hoursAddressLinks: ({ node }) => <HoursAddressLinksBlock {...node.fields} />,
     underline: ({ node }) => (
       <Underline
         className="my-4"
         reverse={node.fields.direction === 'left'}
-        light={node.fields.light}
-        color={node.fields.color}
-        fullWidth={node.fields.fullWidth}
+        light={node.fields.light||false}
+        color={node.fields.color||"default"}
+        fullWidth={node.fields.fullWidth||false}
       />
     ),
   },
