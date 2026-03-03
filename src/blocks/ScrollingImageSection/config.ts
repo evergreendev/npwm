@@ -18,5 +18,14 @@ export const ScrollingImageSection: Block = {
       name: 'subheader',
       type: 'text',
     },
+    {
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'mediaLabel',
+      type: 'text',
+    },
   ],
 }

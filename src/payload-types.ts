@@ -1007,6 +1007,8 @@ export interface ScrollingImageSection {
   backgroundImage: number | Media;
   header?: string | null;
   subheader?: string | null;
+  media?: (number | null) | Media;
+  mediaLabel?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'scrollingImageSection';
@@ -1714,6 +1716,8 @@ export interface ScrollingImageSectionSelect<T extends boolean = true> {
   backgroundImage?: T;
   header?: T;
   subheader?: T;
+  media?: T;
+  mediaLabel?: T;
   id?: T;
   blockName?: T;
 }
