@@ -88,7 +88,7 @@ export const CarouselBlock: React.FC<Props> = ({
             )}
           >
             <RichText
-              className="prose-invert prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6"
+              className="max-w-prose prose-invert prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6"
               data={staticSectionContent}
               enableGutter={false}
             />
