@@ -39,13 +39,23 @@ export const ScrollingImageSection: React.FC<
   }, [isVisible])
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsModalOpen(false)
+      }
+    }
+
     if (isModalOpen) {
       document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', handleKeyDown)
     } else {
       document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
     }
+
     return () => {
       document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isModalOpen])
 
