@@ -34,10 +34,11 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
         loop
         muted
         onClick={onClick}
+        onContextMenu={(e) => e.preventDefault()}
         playsInline
         ref={videoRef}
       >
-        <source src={getMediaUrl(`/media/${filename}`)} />
+        <source src={getMediaUrl(`/media/${filename}`)} type={resource.mimeType || undefined} />
       </video>
     )
   }

@@ -19,7 +19,13 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
     <div className="relative flex wrap items-center justify-center text-white py-28 md:py-0" data-theme="light">
       <div className="select-none w-full aspect-video">
         {media && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover w-full" priority resource={media} />
+          <Media
+            fill
+            imgClassName="-z-10 object-cover w-full"
+            videoClassName="-z-10 object-cover w-full"
+            priority
+            resource={media}
+          />
         )}
       </div>
       {headerLinks && headerLinks.length > 0 && (
