@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
 import { UnderlineBlock } from '@/blocks/Underline/config'
+import { MediaBlock } from '../MediaBlock/config'
 
 export const Carousel: Block = {
   slug: 'carousel',
@@ -39,7 +40,7 @@ export const Carousel: Block = {
               return [
                 ...rootFeatures,
                 HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                BlocksFeature({ blocks: [UnderlineBlock] }),
+                BlocksFeature({ blocks: [UnderlineBlock, MediaBlock] }),
                 FixedToolbarFeature(),
                 InlineToolbarFeature(),
               ]
@@ -76,7 +77,7 @@ export const Carousel: Block = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            BlocksFeature({ blocks: [UnderlineBlock] }),
+            BlocksFeature({ blocks: [UnderlineBlock, MediaBlock] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

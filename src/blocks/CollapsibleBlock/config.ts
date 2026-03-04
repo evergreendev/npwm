@@ -4,7 +4,9 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   FixedToolbarFeature,
+  BlocksFeature,
 } from '@payloadcms/richtext-lexical'
+import { MediaBlock } from '../MediaBlock/config'
 
 export const CollapsibleBlock: Block = {
   slug: 'collapsibleBlock',
@@ -18,6 +20,7 @@ export const CollapsibleBlock: Block = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            BlocksFeature({ blocks: [MediaBlock] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]
@@ -44,6 +47,7 @@ export const CollapsibleBlock: Block = {
               return [
                 ...rootFeatures,
                 HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+                BlocksFeature({ blocks: [MediaBlock] }),
                 FixedToolbarFeature(),
                 InlineToolbarFeature(),
               ]

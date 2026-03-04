@@ -11,6 +11,7 @@ import {
 import { link } from '@/fields/link'
 import { Iframe as IframeBlock } from '../IframeBlock/config'
 import { HoursAddressLinks as HoursAddressLinksBlock } from '../HoursAddressLinks/config'
+import { MediaBlock } from '../MediaBlock/config'
 
 const columnFields: Field[] = [
   {
@@ -44,7 +45,7 @@ const columnFields: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-          BlocksFeature({ blocks: [IframeBlock, HoursAddressLinksBlock] }),
+          BlocksFeature({ blocks: [IframeBlock, HoursAddressLinksBlock, MediaBlock] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]

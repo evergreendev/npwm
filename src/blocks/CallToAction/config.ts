@@ -10,6 +10,7 @@ import {
 
 import { linkGroup } from '@/fields/linkGroup'
 import { UnderlineBlock } from '@/blocks/Underline/config'
+import { MediaBlock } from '../MediaBlock/config'
 
 export const CallToAction: Block = {
   slug: 'cta',
@@ -23,7 +24,7 @@ export const CallToAction: Block = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            BlocksFeature({ blocks: [UnderlineBlock] }),
+            BlocksFeature({ blocks: [UnderlineBlock, MediaBlock] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

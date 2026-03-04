@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import {
+  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -9,6 +10,7 @@ import {
 
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
 
 export const Reviews: CollectionConfig<'reviews'> = {
   slug: 'reviews',
@@ -50,6 +52,7 @@ export const Reviews: CollectionConfig<'reviews'> = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+            BlocksFeature({ blocks: [MediaBlock] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

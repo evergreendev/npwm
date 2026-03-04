@@ -8,7 +8,7 @@ import type { Props as MediaProps } from '../types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const VideoMedia: React.FC<MediaProps> = (props) => {
-  const { onClick, resource, videoClassName } = props
+  const { onClick, resource, videoClassName, controls } = props
 
   const videoRef = useRef<HTMLVideoElement>(null)
   // const [showFallback] = useState<boolean>()
@@ -28,13 +28,13 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
 
     return (
       <video
-        autoPlay
+        autoPlay={!controls}
         className={cn(videoClassName)}
-        controls={false}
-        loop
-        muted
+        controls={controls}
+        loop={!controls}
+        muted={!controls}
         onClick={onClick}
-        onContextMenu={(e) => e.preventDefault()}
+        onContextMenu={(e) => (controls ? undefined : e.preventDefault())}
         playsInline
         ref={videoRef}
       >

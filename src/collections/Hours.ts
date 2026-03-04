@@ -9,7 +9,9 @@ import {
   OrderedListFeature,
   ParagraphFeature,
   UnorderedListFeature,
+  BlocksFeature,
 } from '@payloadcms/richtext-lexical'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
 
 // Define the Hours collection
 const Hours: CollectionConfig = {
@@ -70,6 +72,7 @@ const Hours: CollectionConfig = {
             AlignFeature(),
             ParagraphFeature(),
             HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            BlocksFeature({ blocks: [MediaBlock] }),
             OrderedListFeature(),
             UnorderedListFeature(),
             FixedToolbarFeature(),
