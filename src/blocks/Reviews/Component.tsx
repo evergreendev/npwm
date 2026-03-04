@@ -109,7 +109,7 @@ export const ReviewsBlock: React.FC<ReviewsBlockProps & { id?: string }> = async
             slides={docs.map((review, idx) => (
               <article
                 key={review.id || idx}
-                className="snap-start shrink-0 basis-full sm:basis-1/2 lg:basis-1/3 rounded-xl border border-neutral-200 bg-white p-6 shadow-sm"
+                className="snap-start shrink-0 basis-full sm:basis-1/2 lg:basis-1/3 border border-neutral-200 bg-white p-6 shadow-sm"
               >
                 <div className="mb-4 flex items-center gap-2">
                   {review.platform && (
