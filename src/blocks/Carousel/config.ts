@@ -105,5 +105,21 @@ export const Carousel: Block = {
         condition: (_, siblingData) => siblingData?.hasStaticSection,
       },
     },
+    {
+      name: 'theme',
+      type: 'select',
+      defaultValue: 'dark',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      required: true,
+    },
   ],
 }

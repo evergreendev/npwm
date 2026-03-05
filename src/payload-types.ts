@@ -1088,6 +1088,7 @@ export interface CarouselBlock {
     [k: string]: unknown;
   } | null;
   staticSectionSide?: ('left' | 'right') | null;
+  theme: 'light' | 'dark';
   id?: string | null;
   blockName?: string | null;
   blockType: 'carousel';
@@ -1758,6 +1759,7 @@ export interface CarouselBlockSelect<T extends boolean = true> {
   hasStaticSection?: T;
   staticSectionContent?: T;
   staticSectionSide?: T;
+  theme?: T;
   id?: T;
   blockName?: T;
 }

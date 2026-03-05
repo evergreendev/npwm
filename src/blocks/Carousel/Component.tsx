@@ -13,8 +13,15 @@ export const CarouselBlock: React.FC<Props> = ({
   hasStaticSection,
   staticSectionContent,
   staticSectionSide,
+  theme = 'dark',
 }) => {
   if (!slides || slides.length === 0) return null
+
+  const isLight = theme === 'light'
+  const sectionBg = isLight ? 'bg-light' : 'bg-background-secondary'
+  const textColor = isLight ? 'text-text-primary' : 'text-white'
+  const contentBg = isLight ? 'bg-white' : 'bg-background'
+  const proseClass = isLight ? '' : 'prose-invert'
 
   const carousel = (
     <Carousel
@@ -28,7 +35,7 @@ export const CarouselBlock: React.FC<Props> = ({
             (slide.content &&
               typeof slide.content === 'object' &&
               'root' in slide.content &&
-              (slide.content.root as any)?.children?.length > 0) ||
+              (slide.content.root)?.children?.length > 0) ||
             (slide.hasLink && slide.link),
         )
 
@@ -50,7 +57,7 @@ export const CarouselBlock: React.FC<Props> = ({
 
               {/* Right Side: Content */}
               {hasTextContent && (
-                <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-16 bg-background">
+                <div className={cn('w-full md:w-1/2 flex items-center justify-center p-8 md:p-16', contentBg)}>
                   <div className="max-w-prose w-full">
                     {slide.title && (
                       <h2 className="text-4xl md:text-5xl font-bold mb-2">{slide.title}</h2>
@@ -59,7 +66,10 @@ export const CarouselBlock: React.FC<Props> = ({
 
                     {slide.content && (
                       <RichText
-                        className="mb-8 prose-invert prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6"
+                        className={cn(
+                          'mb-8 prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6',
+                          proseClass,
+                        )}
                         data={slide.content}
                         enableGutter={false}
                       />
@@ -79,16 +89,20 @@ export const CarouselBlock: React.FC<Props> = ({
 
   if (hasStaticSection && staticSectionContent) {
     return (
-      <div className="bg-background-secondary text-white py-0 overflow-hidden">
+      <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')}>
         <div className="flex flex-col md:flex-row">
           <div
             className={cn(
-              'w-full md:w-1/2 p-8 md:p-16 flex items-center bg-background-secondary',
+              'w-full md:w-1/2 p-8 md:p-16 flex items-center',
+              sectionBg,
               staticSectionSide === 'right' && 'md:order-2',
             )}
           >
             <RichText
-              className="max-w-prose prose-invert prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6"
+              className={cn(
+                'max-w-prose prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6',
+                proseClass,
+              )}
               data={staticSectionContent}
               enableGutter={false}
             />
@@ -102,6 +116,6 @@ export const CarouselBlock: React.FC<Props> = ({
   }
 
   return (
-    <div className="bg-background-secondary text-white py-0 overflow-hidden">{carousel}</div>
+    <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')}>{carousel}</div>
   )
 }
