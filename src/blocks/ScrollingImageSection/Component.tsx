@@ -28,14 +28,25 @@ export const ScrollingImageSection: React.FC<
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [initialFadeinIsComplete, setInitialFadeinIsComplete] = useState(hasPrevSection);
+  const [initialFadeinIsComplete, setInitialFadeinIsComplete] = useState(hasPrevSection)
   const { isPastTop, isVisible } = useScrollInfo(sectionRef)
   const containerRef = useRef<HTMLElement>(null)
-  const containerScrollInfo = useScrollInfo(containerRef);
+  const containerScrollInfo = useScrollInfo(containerRef)
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!isVisible) return;
-    setInitialFadeinIsComplete(true);
+    const checkScreenWidth = () => {
+      setIsLargeScreen(window.innerWidth >= 1200)
+    }
+
+    checkScreenWidth()
+    window.addEventListener('resize', checkScreenWidth)
+    return () => window.removeEventListener('resize', checkScreenWidth)
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+    setInitialFadeinIsComplete(true)
   }, [isVisible])
 
   useEffect(() => {
@@ -85,13 +96,64 @@ export const ScrollingImageSection: React.FC<
       )
     }
 
-    return (
-      <Media
-        resource={media}
-        imgClassName="max-w-full max-h-[80vh] object-contain"
-      />
-    )
+    return <Media resource={media} imgClassName="max-w-full max-h-[80vh] object-contain" />
   }
+
+  if (!isLargeScreen)
+    return (
+      <section>
+        <div
+          ref={sectionRef}
+          className={`relative aspect-[16/9] flex flex-col z-10 pointer-events-none`}
+        >
+          <div className="z-30 max-w-full p-8 text-center text-text-primary bg-light/90 pointer-events-auto flex flex-col items-center relative">
+            {header && <h2 className="text-xl font-bold font-header">{header}</h2>}
+            {subheader && <p className="font-header">{subheader}</p>}
+            {media && mediaLabel && (
+              <div className="mt-4 self-end">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-[#D10000] hover:bg-[#A30000] text-white px-6 py-2 font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D10000]"
+                  aria-label={`Open media: ${mediaLabel}`}
+                >
+                  {mediaLabel}
+                </button>
+              </div>
+            )}
+          </div>{backgroundImage && typeof backgroundImage === 'object' && (
+          <Media
+            imgClassName={`object-cover w-full background-position-center z-20`}
+            resource={backgroundImage}
+            priority
+          />
+        )}
+        </div>
+        {/* Modal */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 pointer-events-auto"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <div
+              className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 focus:outline-none p-2"
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+              {renderModalContent()}
+            </div>
+          </div>
+        )}
+      </section>
+    )
 
   return (
     <section
