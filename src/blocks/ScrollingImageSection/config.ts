@@ -27,5 +27,13 @@ export const ScrollingImageSection: Block = {
       name: 'mediaLabel',
       type: 'text',
     },
+    {
+      name: 'transcript',
+      type: 'relationship',
+      relationTo: 'transcripts',
+      admin: {
+        description: 'Optional transcript for the media',
+      },
+    },
   ],
 }

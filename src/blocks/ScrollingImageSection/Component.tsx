@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { Media } from '@/components/Media'
 import type {
   ScrollingImageSection as ScrollingImageSectionProps,
@@ -21,6 +22,7 @@ export const ScrollingImageSection: React.FC<
   subheader,
   media,
   mediaLabel,
+  transcript,
   hasPrevSection,
   hasNextSection,
   prevBackgroundImage,
@@ -149,6 +151,19 @@ export const ScrollingImageSection: React.FC<
                 &times;
               </button>
               {renderModalContent()}
+              {transcript && typeof transcript === 'object' && (
+                <div className="mt-4 w-full flex justify-center">
+                  <Link
+                    href={`/transcripts/${transcript.slug}`}
+                    className="text-sm underline text-white hover:text-gray-300 transition-colors"
+                    aria-label={`Read transcript for ${
+                      (media && typeof media === 'object' && media.alt) || 'this media'
+                    }`}
+                  >
+                    Read Transcript
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -232,6 +247,19 @@ export const ScrollingImageSection: React.FC<
               &times;
             </button>
             {renderModalContent()}
+            {transcript && typeof transcript === 'object' && (
+              <div className="mt-4 w-full flex justify-center">
+                <Link
+                  href={`/transcripts/${transcript.slug}`}
+                  className="text-sm underline text-white hover:text-gray-300 transition-colors"
+                  aria-label={`Read transcript for ${
+                    (media && typeof media === 'object' && media.alt) || 'this media'
+                  }`}
+                >
+                  Read Transcript
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -1031,6 +1031,10 @@ export interface ScrollingImageSection {
   subheader?: string | null;
   media?: (number | null) | Media;
   mediaLabel?: string | null;
+  /**
+   * Optional transcript for the media
+   */
+  transcript?: (number | null) | Transcript;
   id?: string | null;
   blockName?: string | null;
   blockType: 'scrollingImageSection';
@@ -1746,6 +1750,7 @@ export interface ScrollingImageSectionSelect<T extends boolean = true> {
   subheader?: T;
   media?: T;
   mediaLabel?: T;
+  transcript?: T;
   id?: T;
   blockName?: T;
 }
