@@ -7,6 +7,7 @@ import RichText from '@/components/RichText'
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import Link from 'next/link'
 
 type Props = MediaBlockProps & {
   breakout?: boolean
@@ -30,6 +31,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     staticImage,
     videoClassName,
     disableInnerContainer,
+    transcript,
   } = props
 
   let caption
@@ -69,6 +71,23 @@ export const MediaBlock: React.FC<Props> = (props) => {
           )}
           controls={true}
         />
+      )}
+      {transcript && typeof transcript === 'object' && (
+        <div
+          className={cn('mt-4', {
+            container: !disableInnerContainer,
+          })}
+        >
+          <Link
+            href={`/transcripts/${transcript.slug}`}
+            className="text-sm underline hover:text-primary transition-colors"
+            aria-label={`Read transcript for ${
+              (media && typeof media === 'object' && media.alt) || 'this media'
+            }`}
+          >
+            Read Transcript
+          </Link>
+        </div>
       )}
       {caption && (
         <div

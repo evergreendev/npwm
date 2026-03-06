@@ -75,6 +75,7 @@ export interface Config {
     users: User;
     hours: Hour;
     reviews: Review;
+    transcripts: Transcript;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -100,6 +101,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     hours: HoursSelect<false> | HoursSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    transcripts: TranscriptsSelect<false> | TranscriptsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -577,10 +579,30 @@ export interface IframeBlock {
  */
 export interface MediaBlock {
   media: number | Media;
+  /**
+   * Optional transcript for the media
+   */
+  transcript?: (number | null) | Transcript;
   fullWidth?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "transcripts".
+ */
+export interface Transcript {
+  id: number;
+  title: string;
+  content: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1415,6 +1437,10 @@ export interface PayloadLockedDocument {
         value: number | Review;
       } | null)
     | ({
+        relationTo: 'transcripts';
+        value: number | Transcript;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1607,6 +1633,7 @@ export interface IframeBlockSelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
+  transcript?: T;
   fullWidth?: T;
   id?: T;
   blockName?: T;
@@ -2012,6 +2039,18 @@ export interface ReviewsSelect<T extends boolean = true> {
   reviewerName?: T;
   platform?: T;
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "transcripts_select".
+ */
+export interface TranscriptsSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  generateSlug?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

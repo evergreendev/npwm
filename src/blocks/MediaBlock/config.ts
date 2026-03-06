@@ -11,6 +11,14 @@ export const MediaBlock: Block = {
       required: true,
     },
     {
+      name: 'transcript',
+      type: 'relationship',
+      relationTo: 'transcripts',
+      admin: {
+        description: 'Optional transcript for the media',
+      },
+    },
+    {
       name: 'fullWidth',
       type: 'checkbox',
       defaultValue: false,
