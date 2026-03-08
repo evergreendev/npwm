@@ -67,7 +67,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, currentHour, h
         <div className="container flex gap-4 relative">
           <div className="bg-light text-background flex absolute top-0 px-6 py-2">
             <div>
-              <h3 className="font-bold text-center">{hoursHeading}</h3>
+              <h3 className="font-bold text-center -mb-1">{hoursHeading}</h3>
               <RichText enableGutter={false} data={currentHour?.content || ''} />
             </div>
             <VerticalDivider type="thin" color="dark" />

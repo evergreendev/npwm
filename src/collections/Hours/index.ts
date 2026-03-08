@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { revalidateDeleteHour, revalidateHour } from './hooks/revalidateHour'
 import {
   AlignFeature,
   FixedToolbarFeature,
@@ -107,6 +108,10 @@ const Hours: CollectionConfig = {
       },
     },
   ],
+  hooks: {
+    afterChange: [revalidateHour],
+    afterDelete: [revalidateDeleteHour],
+  },
 }
 
 export default Hours

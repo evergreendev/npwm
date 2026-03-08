@@ -7,6 +7,7 @@ import { CMSLink } from '@/components/Link'
 import Image from 'next/image'
 import { Facebook, Instagram, Youtube } from 'lucide-react'
 import { Logo } from '@/components/Logo/Logo'
+import { Hours } from '@/components/Hours'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)() as Footer;
@@ -20,9 +21,15 @@ export async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
           {/* Left Side: Address */}
           <div className="flex justify-center">
+            <div className="flex flex-col gap-0">
+              <h2 className="text-center text-xl font-bold m-0">Today's Hours</h2>
+              <Hours className="prose-p:text-xl" mode="current" />
+            </div>
+
             <Link href="https://www.google.com/maps/place/The+National+Presidential+Wax+Museum/@43.8882532,-103.4284918,1122m/data=!3m3!1e3!4b1!5s0x877d36407604db0d:0x1f589815292a0de!4m16!1m9!4m8!1m0!1m6!1m2!1s0x877d363f898e1349:0x54ff1acc15dffe58!2sThe+National+Presidential+Wax+Museum,+609+US-16A,+Keystone,+SD+57751!2m2!1d-103.4259169!2d43.8882494!3m5!1s0x877d363f898e1349:0x54ff1acc15dffe58!8m2!3d43.8882494!4d-103.4259169!16s%2Fg%2F1tkb5ltj?entry=ttu&g_ep=EgoyMDI2MDIxNi4wIKXMDSoASAFQAw%3D%3D">
               <address className="not-italic text-xl text-center md:text-left">
-                609 Hwy 16A<br />
+                609 Hwy 16A
+                <br />
                 Keystone, SD 57751
               </address>
             </Link>
