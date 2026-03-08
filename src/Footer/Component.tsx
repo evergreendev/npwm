@@ -22,7 +22,7 @@ export async function Footer() {
           {/* Left Side: Address */}
           <div className="flex justify-center">
             <div className="flex flex-col gap-0">
-              <h2 className="text-center text-xl font-bold m-0">Today's Hours</h2>
+              <h2 className="text-center text-xl font-bold m-0">Today&apos;s Hours</h2>
               <Hours className="prose-p:text-xl" mode="current" />
             </div>
 
