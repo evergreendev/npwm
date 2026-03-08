@@ -11,8 +11,11 @@ export const HoursAddressLinksBlock: React.FC<HoursAddressLinksBlockType> = (pro
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
         {/* Column 1: Today's Hours */}
         <div className="flex flex-col items-center md:items-start">
-          <span className="text-sm uppercase tracking-wider text-text-secondary mb-1">Today&apos;s Hours</span>
+          <span className="text-sm uppercase tracking-wider text-text-secondary mb-1">
+            Today&apos;s Hours
+          </span>
           {/*todo fix this bug<Hours mode="current" className="text-lg font-semibold" />*/}
+          <p className="m-0 not-prose">9:00am-5:00pm</p>
         </div>
 
         {/* Column 2: Address */}
