@@ -5,6 +5,14 @@ export const Iframe: Block = {
   interfaceName: 'IframeBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'src',
       type: 'text',
       required: true,

@@ -8,6 +8,7 @@ import type { CollapsibleBlock as CollapsibleBlockProps } from '@/payload-types'
 import { ChevronDown } from 'lucide-react'
 
 export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: string }> = ({
+  id,
   introContent,
   items,
   className,
@@ -16,7 +17,7 @@ export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: st
   const contentId = React.useId()
 
   return (
-    <div className={cn('w-full text-text-primary', className)}>
+    <div className={cn('w-full text-text-primary', className)} id={id || undefined}>
       <div className="container py-8">
         {introContent && <RichText data={introContent} enableGutter={false} className="text-text-primary" />}
 

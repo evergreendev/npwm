@@ -79,7 +79,7 @@ const Stars: React.FC<{ className?: string }> = ({ className }) => (
   </div>
 )
 
-export const ReviewsBlock: React.FC<ReviewsBlockProps & { id?: string }> = async ({
+export const ReviewsBlock: React.FC<ReviewsBlockProps> = async ({
   id,
   limit,
   headline,
@@ -93,7 +93,7 @@ export const ReviewsBlock: React.FC<ReviewsBlockProps & { id?: string }> = async
   })
 
   return (
-    <div className="bg-background py-12 px-8 relative" id={`block-${id}`}>
+    <div className="bg-background py-12 px-8 relative" id={id || undefined}>
       <div className="relative max-w-5xl mx-auto">
         {headline && (
           <div className="mb-8">

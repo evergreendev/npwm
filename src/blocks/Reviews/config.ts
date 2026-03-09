@@ -9,6 +9,14 @@ export const Reviews: Block = {
   },
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'headline',
       type: 'text',
     },

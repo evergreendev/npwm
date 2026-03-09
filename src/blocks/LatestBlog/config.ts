@@ -6,6 +6,14 @@ export const LatestBlog: Block = {
   interfaceName: 'LatestBlogBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'headline',
       type: 'text',
       required: true,

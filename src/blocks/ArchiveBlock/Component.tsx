@@ -72,7 +72,7 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="py-8 bg-dark-background text-white" id={`block-${id}`}>
+    <div className="py-8 bg-dark-background text-white" id={id || undefined}>
       {introContent && (
         <div className="container mb-4">
           <RichText className="ms-0 max-w-3xl prose-h2:font-normal prose-h2:text-4xl prose-headings:mb-2" data={introContent} enableGutter={false} />

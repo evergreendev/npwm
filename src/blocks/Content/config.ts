@@ -73,6 +73,14 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'columns',
       type: 'array',
       admin: {

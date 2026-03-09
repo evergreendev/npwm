@@ -6,9 +6,9 @@ type Props = {
   className?: string
 } & HoursBlockType
 
-export const HoursBlock: React.FC<Props> = ({ mode, className }) => {
+export const HoursBlock: React.FC<Props> = ({ id, mode, className }) => {
   return (
-    <div className="container my-12">
+    <div className="container my-12" id={id || undefined}>
       <Hours mode={mode} className={className} />
     </div>
   )

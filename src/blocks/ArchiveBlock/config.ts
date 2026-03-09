@@ -16,6 +16,14 @@ export const Archive: Block = {
   interfaceName: 'ArchiveBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'introContent',
       type: 'richText',
       editor: lexicalEditor({

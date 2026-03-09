@@ -465,6 +465,7 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  id?: string | null;
   richText?: {
     root: {
       type: string;
@@ -505,7 +506,6 @@ export interface CallToActionBlock {
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
 }
@@ -514,6 +514,7 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  id?: string | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -555,7 +556,6 @@ export interface ContentBlock {
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'content';
 }
@@ -564,12 +564,12 @@ export interface ContentBlock {
  * via the `definition` "IframeBlock".
  */
 export interface IframeBlock {
+  id?: string | null;
   src: string;
   title: string;
   height?: number | null;
   allowFullScreen?: boolean | null;
   frameBorder?: number | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'iframe';
 }
@@ -578,13 +578,13 @@ export interface IframeBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
+  id?: string | null;
   media: number | Media;
   /**
    * Optional transcript for the media
    */
   transcript?: (number | null) | Transcript;
   fullWidth?: boolean | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
 }
@@ -609,11 +609,11 @@ export interface Transcript {
  * via the `definition` "VideoBlock".
  */
 export interface VideoBlock {
+  id?: string | null;
   videoType?: ('upload' | 'link') | null;
   videoUpload?: (number | null) | Media;
   videoLink?: string | null;
   thumbnail?: (number | null) | Media;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'videoBlock';
 }
@@ -622,6 +622,7 @@ export interface VideoBlock {
  * via the `definition` "CollapsibleBlock".
  */
 export interface CollapsibleBlock {
+  id?: string | null;
   introContent?: {
     root: {
       type: string;
@@ -664,7 +665,6 @@ export interface CollapsibleBlock {
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'collapsibleBlock';
 }
@@ -673,6 +673,7 @@ export interface CollapsibleBlock {
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
+  id?: string | null;
   introContent?: {
     root: {
       type: string;
@@ -724,7 +725,6 @@ export interface ArchiveBlock {
           }
       )[]
     | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
 }
@@ -816,6 +816,7 @@ export interface Exhibit {
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
+  id?: string | null;
   form: number | Form;
   enableIntro?: boolean | null;
   introContent?: {
@@ -833,7 +834,6 @@ export interface FormBlock {
     };
     [k: string]: unknown;
   } | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'formBlock';
 }
@@ -1016,8 +1016,8 @@ export interface Form {
  * via the `definition` "HoursBlock".
  */
 export interface HoursBlock {
-  mode: 'current' | 'all';
   id?: string | null;
+  mode: 'current' | 'all';
   blockName?: string | null;
   blockType: 'hoursBlock';
 }
@@ -1026,6 +1026,7 @@ export interface HoursBlock {
  * via the `definition` "ScrollingImageSection".
  */
 export interface ScrollingImageSection {
+  id?: string | null;
   backgroundImage: number | Media;
   header?: string | null;
   subheader?: string | null;
@@ -1035,7 +1036,6 @@ export interface ScrollingImageSection {
    * Optional transcript for the media
    */
   transcript?: (number | null) | Transcript;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'scrollingImageSection';
 }
@@ -1044,12 +1044,12 @@ export interface ScrollingImageSection {
  * via the `definition` "ReviewsBlock".
  */
 export interface ReviewsBlock {
+  id?: string | null;
   headline?: string | null;
   /**
    * Maximum number of recent reviews to display
    */
   limit?: number | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'reviewsBlock';
 }
@@ -1058,6 +1058,7 @@ export interface ReviewsBlock {
  * via the `definition` "CarouselBlock".
  */
 export interface CarouselBlock {
+  id?: string | null;
   slides?:
     | {
         image: number | Media;
@@ -1115,7 +1116,6 @@ export interface CarouselBlock {
   } | null;
   staticSectionSide?: ('left' | 'right') | null;
   theme: 'light' | 'dark';
-  id?: string | null;
   blockName?: string | null;
   blockType: 'carousel';
 }
@@ -1124,6 +1124,7 @@ export interface CarouselBlock {
  * via the `definition` "LatestBlogBlock".
  */
 export interface LatestBlogBlock {
+  id?: string | null;
   headline: string;
   showArchiveLink?: boolean | null;
   link?: {
@@ -1141,7 +1142,6 @@ export interface LatestBlogBlock {
     url?: string | null;
     label: string;
   };
-  id?: string | null;
   blockName?: string | null;
   blockType: 'latestBlog';
 }
@@ -1572,6 +1572,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  id?: T;
   richText?: T;
   theme?: T;
   links?:
@@ -1589,7 +1590,6 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1597,6 +1597,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  id?: T;
   columns?:
     | T
     | {
@@ -1615,7 +1616,6 @@ export interface ContentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1623,12 +1623,12 @@ export interface ContentBlockSelect<T extends boolean = true> {
  * via the `definition` "IframeBlock_select".
  */
 export interface IframeBlockSelect<T extends boolean = true> {
+  id?: T;
   src?: T;
   title?: T;
   height?: T;
   allowFullScreen?: T;
   frameBorder?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1636,10 +1636,10 @@ export interface IframeBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
+  id?: T;
   media?: T;
   transcript?: T;
   fullWidth?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1647,11 +1647,11 @@ export interface MediaBlockSelect<T extends boolean = true> {
  * via the `definition` "VideoBlock_select".
  */
 export interface VideoBlockSelect<T extends boolean = true> {
+  id?: T;
   videoType?: T;
   videoUpload?: T;
   videoLink?: T;
   thumbnail?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1659,6 +1659,7 @@ export interface VideoBlockSelect<T extends boolean = true> {
  * via the `definition` "CollapsibleBlock_select".
  */
 export interface CollapsibleBlockSelect<T extends boolean = true> {
+  id?: T;
   introContent?: T;
   items?:
     | T
@@ -1673,7 +1674,6 @@ export interface CollapsibleBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1681,6 +1681,7 @@ export interface CollapsibleBlockSelect<T extends boolean = true> {
  * via the `definition` "ArchiveBlock_select".
  */
 export interface ArchiveBlockSelect<T extends boolean = true> {
+  id?: T;
   introContent?: T;
   populateBy?: T;
   showArchiveLink?: T;
@@ -1698,7 +1699,6 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   categories?: T;
   limit?: T;
   selectedDocs?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1706,10 +1706,10 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
+  id?: T;
   form?: T;
   enableIntro?: T;
   introContent?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1717,8 +1717,8 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "HoursBlock_select".
  */
 export interface HoursBlockSelect<T extends boolean = true> {
-  mode?: T;
   id?: T;
+  mode?: T;
   blockName?: T;
 }
 /**
@@ -1726,6 +1726,7 @@ export interface HoursBlockSelect<T extends boolean = true> {
  * via the `definition` "LatestBlogBlock_select".
  */
 export interface LatestBlogBlockSelect<T extends boolean = true> {
+  id?: T;
   headline?: T;
   showArchiveLink?: T;
   link?:
@@ -1737,7 +1738,6 @@ export interface LatestBlogBlockSelect<T extends boolean = true> {
         url?: T;
         label?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1745,13 +1745,13 @@ export interface LatestBlogBlockSelect<T extends boolean = true> {
  * via the `definition` "ScrollingImageSection_select".
  */
 export interface ScrollingImageSectionSelect<T extends boolean = true> {
+  id?: T;
   backgroundImage?: T;
   header?: T;
   subheader?: T;
   media?: T;
   mediaLabel?: T;
   transcript?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1759,9 +1759,9 @@ export interface ScrollingImageSectionSelect<T extends boolean = true> {
  * via the `definition` "ReviewsBlock_select".
  */
 export interface ReviewsBlockSelect<T extends boolean = true> {
+  id?: T;
   headline?: T;
   limit?: T;
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1769,6 +1769,7 @@ export interface ReviewsBlockSelect<T extends boolean = true> {
  * via the `definition` "CarouselBlock_select".
  */
 export interface CarouselBlockSelect<T extends boolean = true> {
+  id?: T;
   slides?:
     | T
     | {
@@ -1792,7 +1793,6 @@ export interface CarouselBlockSelect<T extends boolean = true> {
   staticSectionContent?: T;
   staticSectionSide?: T;
   theme?: T;
-  id?: T;
   blockName?: T;
 }
 /**

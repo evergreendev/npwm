@@ -15,6 +15,14 @@ export const Carousel: Block = {
   interfaceName: 'CarouselBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'slides',
       type: 'array',
       fields: [

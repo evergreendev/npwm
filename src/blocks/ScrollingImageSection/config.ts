@@ -5,6 +5,14 @@ export const ScrollingImageSection: Block = {
   interfaceName: 'ScrollingImageSection',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'backgroundImage',
       type: 'upload',
       relationTo: 'media',

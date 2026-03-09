@@ -6,7 +6,7 @@ import { cn } from '@/utilities/ui'
 import type { VideoBlock as VideoBlockProps } from '@/payload-types'
 
 export const VideoBlock: React.FC<VideoBlockProps & { className?: string }> = (props) => {
-  const { videoType, videoUpload, videoLink, thumbnail, className } = props
+  const { id, videoType, videoUpload, videoLink, thumbnail, className } = props
   const [isPlaying, setIsPlaying] = useState(false)
 
   const handlePlay = () => {
@@ -20,7 +20,7 @@ export const VideoBlock: React.FC<VideoBlockProps & { className?: string }> = (p
   }
 
   return (
-    <div className={cn('container my-4', className)}>
+    <div className={cn('container my-4', className)} id={id || undefined}>
       <div className="relative aspect-video bg-black rounded-xl overflow-hidden group">
         {!isPlaying ? (
           <div className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer" onClick={handlePlay}>

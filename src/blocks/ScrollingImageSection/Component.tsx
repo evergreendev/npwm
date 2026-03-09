@@ -17,6 +17,7 @@ export const ScrollingImageSection: React.FC<
     nextBackgroundImage: MediaType | null
   }
 > = ({
+  id,
   backgroundImage,
   header,
   subheader,
@@ -103,7 +104,7 @@ export const ScrollingImageSection: React.FC<
 
   if (!isLargeScreen)
     return (
-      <section>
+      <section id={id || undefined}>
         <div
           ref={sectionRef}
           className={`relative aspect-[16/9] flex flex-col z-10 pointer-events-none`}
@@ -174,6 +175,7 @@ export const ScrollingImageSection: React.FC<
     <section
       ref={containerRef}
       className={`w-full relative ${isPastTop && hasNextSection ? 'h-screen' : 'h-[200vh]'}`}
+      id={id || undefined}
     >
       {/* Background Image Container - Sticky */}
       <div

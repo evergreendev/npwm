@@ -1,6 +1,7 @@
 import React from 'react'
 
 export type IframeBlockProps = {
+  id?: string
   src: string
   title: string
   height?: number
@@ -9,6 +10,7 @@ export type IframeBlockProps = {
 }
 
 export const IframeBlock: React.FC<IframeBlockProps> = ({
+  id,
   src,
   title,
   height = 450,
@@ -16,7 +18,7 @@ export const IframeBlock: React.FC<IframeBlockProps> = ({
   frameBorder = 0,
 }) => {
   return (
-    <div className="w-full my-6">
+    <div className="w-full my-6" id={id || undefined}>
       <iframe
         src={src}
         title={title}

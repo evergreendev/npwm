@@ -5,6 +5,14 @@ export const MediaBlock: Block = {
   interfaceName: 'MediaBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'media',
       type: 'upload',
       relationTo: 'media',

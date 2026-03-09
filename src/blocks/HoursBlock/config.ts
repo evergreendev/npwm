@@ -5,6 +5,14 @@ export const HoursBlock: Block = {
   interfaceName: 'HoursBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'mode',
       type: 'select',
       defaultValue: 'current',

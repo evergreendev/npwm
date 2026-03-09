@@ -5,6 +5,14 @@ export const VideoBlock: Block = {
   interfaceName: 'VideoBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Used for anchor links',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'videoType',
       type: 'radio',
       options: [

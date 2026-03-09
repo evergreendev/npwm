@@ -9,6 +9,7 @@ import { cn } from '@/utilities/ui'
 type Props = CarouselBlockProps
 
 export const CarouselBlock: React.FC<Props> = ({
+  id,
   slides,
   hasStaticSection,
   staticSectionContent,
@@ -89,7 +90,7 @@ export const CarouselBlock: React.FC<Props> = ({
 
   if (hasStaticSection && staticSectionContent) {
     return (
-      <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')}>
+      <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')} id={id || undefined}>
         <div className="flex flex-col md:flex-row">
           <div
             className={cn(
@@ -116,6 +117,8 @@ export const CarouselBlock: React.FC<Props> = ({
   }
 
   return (
-    <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')}>{carousel}</div>
+    <div className={cn(sectionBg, textColor, 'py-0 overflow-hidden')} id={id || undefined}>
+      {carousel}
+    </div>
   )
 }

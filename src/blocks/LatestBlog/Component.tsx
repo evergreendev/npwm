@@ -37,7 +37,7 @@ export const LatestBlogBlock: React.FC<
   const excerpt = latestPost.meta?.description || ''
 
   return (
-    <div className="py-16 text-white bg-dark-background" id={`block-${id}`}>
+    <div className="py-16 text-white bg-dark-background" id={id || undefined}>
       <div className="container">
         {headline && (
           <h2 className="font-montserrat text-4xl font-normal mb-12">

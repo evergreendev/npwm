@@ -22,6 +22,7 @@ type Props = MediaBlockProps & {
 
 export const MediaBlock: React.FC<Props> = (props) => {
   const {
+    id,
     captionClassName,
     className,
     enableGutter = true,
@@ -46,6 +47,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
         },
         className,
       )}
+      id={id || undefined}
     >
       {(media || staticImage) && (
         <Media
