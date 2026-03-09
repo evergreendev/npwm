@@ -50,7 +50,7 @@ export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: st
               className="w-full text-text-primary"
             >
               <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-                <div className={cn('flex flex-col gap-6 justify-center', !isEven && 'md:order-2')}>
+                <div className={cn('flex flex-col gap-6 justify-center mt-2', !isEven && 'md:order-2')}>
                   {item.title && <h3 className="text-3xl md:text-4xl font-bold text-text-primary">{item.title}</h3>}
                   {item.description && <RichText data={item.description} enableGutter={false} className="text-text-primary" />}
                 </div>
