@@ -64,7 +64,14 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let src: StaticImageData | string = srcFromProps || ''
 
   if (!src && resource && typeof resource === 'object') {
-    const { alt: altFromResource, height: fullHeight, url, width: fullWidth } = resource
+    const {
+      alt: altFromResource,
+      focalX,
+      focalY,
+      height: fullHeight,
+      url,
+      width: fullWidth,
+    } = resource
 
     width = fullWidth!
     height = fullHeight!
@@ -74,6 +81,11 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     src = getMediaUrl(url, cacheTag)
   }
+
+  const focalPoint =
+    resource && typeof resource === 'object' && resource.focalX && resource.focalY
+      ? { x: resource.focalX, y: resource.focalY }
+      : null
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined)
 
@@ -98,6 +110,14 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         loading={loading}
         sizes={sizes}
         src={src}
+        style={
+          fill && focalPoint
+            ? {
+                objectFit: 'cover',
+                objectPosition: `${focalPoint.x}% ${focalPoint.y}%`,
+              }
+            : undefined
+        }
         width={!fill ? width : undefined}
       />
     </picture>

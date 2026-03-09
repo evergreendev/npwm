@@ -19,6 +19,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
               return (
                 <div className="col-span-4" key={index}>
                   <Card
+                    aspectRatio="4/3"
                     className="h-full"
                     doc={result}
                     relationTo={result.relationTo || 'posts'}

@@ -22,9 +22,10 @@ export const Card: React.FC<{
   relationTo?: string
   showCategories?: boolean
   title?: string
+  aspectRatio?: '4/3'
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo, showCategories, title: titleFromProps } = props
+  const { className, doc, relationTo, showCategories, title: titleFromProps, aspectRatio } = props
 
   const { slug, categories, meta, title, heroImage, hero } = doc || {}
   const { description, image: metaImage } = meta || {}
@@ -44,9 +45,16 @@ export const Card: React.FC<{
       )}
       ref={card.ref}
     >
-      <div className="relative w-full ">
-        {!imageToUse && <div className=""></div>}
-        {imageToUse && typeof imageToUse !== 'string' && <Media resource={imageToUse} size="33vw" />}
+      <div className={cn('relative w-full', aspectRatio === '4/3' && 'aspect-[4/3]')}>
+        {!imageToUse && <div className={cn(aspectRatio === '4/3' && 'w-full h-full bg-muted')}></div>}
+        {imageToUse && typeof imageToUse !== 'string' && (
+          <Media
+            fill={aspectRatio === '4/3'}
+            imgClassName={cn(aspectRatio === '4/3' && 'object-cover')}
+            resource={imageToUse}
+            size="33vw"
+          />
+        )}
       </div>
       <div className="p-4">
         {showCategories && hasCategories && (
