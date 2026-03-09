@@ -113,7 +113,7 @@ export const ScrollingImageSection: React.FC<
             {header && <h2 className="text-xl font-bold font-header">{header}</h2>}
             {subheader && <p className="font-header">{subheader}</p>}
             {media && mediaLabel && (
-              <div className="mt-4 self-end">
+              <div className="mt-4 self-center sm:self-end">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
@@ -216,7 +216,7 @@ export const ScrollingImageSection: React.FC<
           {header && <h2 className="text-4xl font-bold font-header">{header}</h2>}
           {subheader && <p className="text-4xl font-header">{subheader}</p>}
           {media && mediaLabel && (
-            <div className="mt-4 self-end">
+            <div className="mt-4 self-center sm:self-end">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}

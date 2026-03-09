@@ -96,8 +96,8 @@ export const ReviewsBlock: React.FC<ReviewsBlockProps> = async ({
     <div className="bg-background py-12 px-8 relative" id={id || undefined}>
       <div className="relative max-w-5xl mx-auto">
         {headline && (
-          <div className="mb-8">
-            <h2 className="mb-4 text-5xl text-light">{headline}</h2>
+          <div className="md:mb-8">
+            <h2 className="mb-4 text-2xl md:text-5xl text-light">{headline}</h2>
             <Underline />
           </div>
         )}
