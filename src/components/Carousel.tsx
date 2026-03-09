@@ -194,7 +194,7 @@ export function Carousel({
     root: {
       display: 'grid',
       gap: 8,
-      alignItems: 'start',
+      alignItems: 'center',
       maxWidth: '100%',
     },
     controlsRow: {
@@ -210,6 +210,7 @@ export function Carousel({
     },
     track: {
       display: 'flex',
+      alignItems: 'center',
       width: `${slideCount * 100}%`,
       transform: `translateX(-${(index * 100) / Math.max(slideCount, 1)}%)`,
       transition: 'transform 350ms ease',
