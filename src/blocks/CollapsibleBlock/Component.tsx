@@ -56,11 +56,11 @@ export const CollapsibleBlock: React.FC<CollapsibleBlockProps & { className?: st
                 </div>
 
                 <div className={cn(
-                  'relative flex flex-col sm:flex-row flex-wrap w-full min-h-100',
+                  'relative flex flex-col sm:flex-row flex-wrap w-full',
                   isEven ? 'md:order-2' : 'md:order-1'
                 )}>
                   {item.images?.map((img, imgIndex) => (
-                    <div key={img.id || imgIndex} className="relative flex-1 h-full w-full">
+                    <div key={img.id || imgIndex} className="relative flex-1 w-full aspect-[4/3]">
                       {img.image && typeof img.image === 'object' && (
                         <Media
                           resource={img.image}
