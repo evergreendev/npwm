@@ -11,7 +11,7 @@ const heroes = {
 export const RenderHero: React.FC<Page['hero']> = (props) => {
   const { type } = props || {}
 
-  if (!type || type === 'none') return <div className="h-4 mb-8 bg-background"></div>
+  if (!type || type === 'none') return <div className="h-5 bg-background"></div>
 
   const HeroToRender = heroes[type]
 

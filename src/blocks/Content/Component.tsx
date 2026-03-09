@@ -31,7 +31,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 })}
                 key={index}
               >
-                {richText && <RichText className={'text-text-primary sm:prose-h2:text-5xl sm:prose-h3:text-2xl prose-h3:font-normal'} data={richText} enableGutter={false} />}
+                {richText && <RichText className={'text-text-primary prose-h2:text-xl sm:prose-h2:text-5xl prose-h3:xl sm:prose-h3:text-2xl prose-h3:font-normal'} data={richText} enableGutter={false} />}
 
                 {enableLink && <CMSLink {...link} />}
               </div>
