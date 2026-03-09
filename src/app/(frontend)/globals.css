@@ -181,6 +181,14 @@
   body {
     @apply bg-light text-foreground min-h-screen flex flex-col font-body overflow-x-hidden;
   }
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:hover {
+    opacity: 0.8;
+  }
 }
 
 html {

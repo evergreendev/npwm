@@ -9,8 +9,9 @@ const config = {
         DEFAULT: {
           css: [
             {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
+              '--tw-prose-body': 'var(--color-text-primary)',
+              '--tw-prose-headings': 'var(--color-text-primary)',
+              '--tw-prose-links': 'inherit',
               h1: {
                 fontWeight: 'normal',
                 marginBottom: '0.25em',

@@ -82,7 +82,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
         >
           <Link
             href={`/transcripts/${transcript.slug}`}
-            className="text-sm underline hover:text-primary transition-colors"
+            className="text-sm underline hover:opacity-80 transition-opacity"
             aria-label={`Read transcript for ${
               (media && typeof media === 'object' && media.alt) || 'this media'
             }`}
