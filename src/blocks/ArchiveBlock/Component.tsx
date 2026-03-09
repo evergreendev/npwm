@@ -41,6 +41,7 @@ export const ArchiveBlock: React.FC<
       collection: relationTo || 'posts',
       depth: 1,
       limit,
+      sort: '-publishedAt',
       ...(flattenedCategories && flattenedCategories.length > 0 && (relationTo === 'posts' || !relationTo)
         ? {
             where: {
