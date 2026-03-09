@@ -75,7 +75,7 @@ export const ArchiveBlock: React.FC<
     <div className="py-8 bg-dark-background text-white" id={id || undefined}>
       {introContent && (
         <div className="container mb-4">
-          <RichText className="ms-0 max-w-3xl prose-h2:font-normal prose-h2:text-4xl prose-headings:mb-2" data={introContent} enableGutter={false} />
+          <RichText className="ms-0 prose-a:text-light max-w-3xl prose-h2:font-normal prose-h2:text-4xl prose-headings:mb-2" data={introContent} enableGutter={false} />
         </div>
       )}
       <CollectionArchive posts={posts} />
