@@ -8,7 +8,7 @@ import { Media } from '@/components/Media'
 import { SlidingUnderlineLink } from '@/components/SlidingUnderlineLink'
 import VerticalDivider from '@/components/VerticalDivider'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) => {
+export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks, placeholder }) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks }) =
               videoClassName="-z-10 object-cover w-full"
               priority
               resource={media}
+              placeholder={placeholder}
             />
           )}
         </div>

@@ -86,6 +86,15 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'placeholder',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
+        description: 'Placeholder image to show while video is loading',
+      },
+      relationTo: 'media',
+    },
   ],
   label: false,
 }

@@ -207,6 +207,10 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    /**
+     * Placeholder image to show while video is loading
+     */
+    placeholder?: (number | null) | Media;
   };
   layout: (
     | CallToActionBlock
@@ -779,6 +783,10 @@ export interface Exhibit {
         }[]
       | null;
     media?: (number | null) | Media;
+    /**
+     * Placeholder image to show while video is loading
+     */
+    placeholder?: (number | null) | Media;
   };
   layout: (
     | CallToActionBlock
@@ -1535,6 +1543,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        placeholder?: T;
       };
   layout?:
     | T
@@ -1855,6 +1864,7 @@ export interface ExhibitsSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        placeholder?: T;
       };
   layout?:
     | T
