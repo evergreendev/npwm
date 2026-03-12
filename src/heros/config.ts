@@ -10,6 +10,7 @@ import {
 
 import { link } from '@/fields/link'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { MachForm } from '@/blocks/MachForm/config'
 
 export const hero: Field = {
   name: 'hero',
@@ -40,7 +41,7 @@ export const hero: Field = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            BlocksFeature({ blocks: [MediaBlock] }),
+            BlocksFeature({ blocks: [MediaBlock, MachForm] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

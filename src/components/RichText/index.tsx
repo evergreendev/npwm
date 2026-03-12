@@ -20,12 +20,14 @@ import type {
   HoursAddressLinksBlock as HoursAddressLinksBlockProps,
   MediaBlock as MediaBlockProps,
   UnderlineBlock as UnderlineBlockProps,
+  MachFormBlock as MachFormBlockProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { IframeBlock } from '@/blocks/IframeBlock/Component'
 import { HoursAddressLinksBlock } from '@/blocks/HoursAddressLinks/Component'
 import { Underline } from '@/components/Underline'
+import { MachFormBlock } from '@/blocks/MachForm/Component'
 import { cn } from '@/utilities/ui'
 
 type NodeTypes =
@@ -38,6 +40,7 @@ type NodeTypes =
       | BannerBlockProps
       | CodeBlockProps
       | UnderlineBlockProps
+      | MachFormBlockProps
     >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -68,6 +71,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     /*@ts-expect-error Iframe problems*/
     iframe: ({ node }) => <IframeBlock {...node.fields} />,
+    machForm: ({ node }) => <MachFormBlock {...node.fields} />,
     hoursAddressLinks: ({ node }) => <HoursAddressLinksBlock {...node.fields} />,
     underline: ({ node }) => (
       <Underline

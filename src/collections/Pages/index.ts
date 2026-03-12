@@ -15,6 +15,7 @@ import { LatestBlog } from '@/blocks/LatestBlog/config'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/config'
 import { Reviews as ReviewsBlock } from '@/blocks/Reviews/config'
 import { Carousel as CarouselBlock } from '@/blocks/Carousel/config'
+import { MachForm } from '@/blocks/MachForm/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
@@ -94,6 +95,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ScrollingImageSection,
                 ReviewsBlock,
                 CarouselBlock,
+                MachForm,
               ],
               required: true,
               admin: {

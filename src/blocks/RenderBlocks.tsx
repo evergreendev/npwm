@@ -16,6 +16,7 @@ import { LatestBlogBlock } from '@/blocks/LatestBlog/Component'
 import { ScrollingImageSection } from '@/blocks/ScrollingImageSection/Component'
 import { ReviewsBlock } from '@/blocks/Reviews/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { MachFormBlock } from '@/blocks/MachForm/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -32,6 +33,7 @@ const blockComponents = {
   scrollingImageSection: ScrollingImageSection,
   reviewsBlock: ReviewsBlock,
   carousel: CarouselBlock,
+  machForm: MachFormBlock,
 }
 
 export const RenderBlocks: React.FC<{

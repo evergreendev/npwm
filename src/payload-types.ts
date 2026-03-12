@@ -226,6 +226,7 @@ export interface Page {
     | ScrollingImageSection
     | ReviewsBlock
     | CarouselBlock
+    | MachFormBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1155,6 +1156,16 @@ export interface LatestBlogBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MachFormBlock".
+ */
+export interface MachFormBlock {
+  formType: 'employment' | 'reservations';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'machForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hours".
  */
 export interface Hour {
@@ -1561,6 +1572,7 @@ export interface PagesSelect<T extends boolean = true> {
         scrollingImageSection?: T | ScrollingImageSectionSelect<T>;
         reviewsBlock?: T | ReviewsBlockSelect<T>;
         carousel?: T | CarouselBlockSelect<T>;
+        machForm?: T | MachFormBlockSelect<T>;
       };
   meta?:
     | T
@@ -1802,6 +1814,15 @@ export interface CarouselBlockSelect<T extends boolean = true> {
   staticSectionContent?: T;
   staticSectionSide?: T;
   theme?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MachFormBlock_select".
+ */
+export interface MachFormBlockSelect<T extends boolean = true> {
+  formType?: T;
+  id?: T;
   blockName?: T;
 }
 /**
