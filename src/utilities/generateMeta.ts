@@ -8,7 +8,7 @@ import { getServerSideURL } from './getURL'
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
-  let url = serverUrl + '/website-template-OG.webp'
+  let url = serverUrl + '/museum-facade-edited-png.webp'
 
   if (image && typeof image === 'object' && 'url' in image) {
     const ogUrl = image.sizes?.og?.url
