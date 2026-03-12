@@ -30,7 +30,7 @@ export const MachFormBlock: React.FC<MachFormBlockProps> = ({ formType }) => {
       script = document.createElement('script')
       script.id = scriptId
       script.async = true
-      script.src = '//www.presidentialwaxmuseum.com/machform/js/mf.js'
+      script.src = '//waxmuseummachform.egmrc.com/js/mf.js'
 
       const placeholder = document.getElementById('mf_placeholder')
       if (placeholder && placeholder.parentNode) {
@@ -45,7 +45,7 @@ export const MachFormBlock: React.FC<MachFormBlockProps> = ({ formType }) => {
     <div className="container py-12">
       <div
         id="mf_placeholder"
-        data-formurl={`//www.presidentialwaxmuseum.com/machform/embed.php?id=${form.id}`}
+        data-formurl={`//waxmuseummachform.egmrc.com/embed.php?id=${form.id}`}
         data-formheight={form.height}
         data-formtitle={form.title}
         data-paddingbottom="10"
