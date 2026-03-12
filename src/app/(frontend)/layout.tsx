@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { Inter, Montserrat } from 'next/font/google'
 import React from 'react'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,6 +37,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-970922599"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-970922599');
+            gtag('config', 'G-6GVGKSGY2F');
+            gtag('config', 'G-BWZ3SGKXF2');
+          `}
+        </Script>
       </head>
       <body>
         <Providers>
