@@ -96,6 +96,25 @@ export const Carousel: Block = {
       },
     },
     {
+      name: 'staticSectionHasLink',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Add Link to Static Section',
+      admin: {
+        condition: (_, siblingData) => siblingData?.hasStaticSection,
+      },
+    },
+    link({
+      appearances: false,
+      overrides: {
+        name: 'staticSectionLink',
+        admin: {
+          condition: (_, siblingData) =>
+            siblingData?.hasStaticSection && siblingData?.staticSectionHasLink,
+        },
+      },
+    }),
+    {
       name: 'staticSectionSide',
       type: 'select',
       defaultValue: 'left',

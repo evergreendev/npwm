@@ -1123,6 +1123,22 @@ export interface CarouselBlock {
     };
     [k: string]: unknown;
   } | null;
+  staticSectionHasLink?: boolean | null;
+  staticSectionLink?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   staticSectionSide?: ('left' | 'right') | null;
   theme: 'light' | 'dark';
   blockName?: string | null;
@@ -1812,6 +1828,16 @@ export interface CarouselBlockSelect<T extends boolean = true> {
       };
   hasStaticSection?: T;
   staticSectionContent?: T;
+  staticSectionHasLink?: T;
+  staticSectionLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   staticSectionSide?: T;
   theme?: T;
   blockName?: T;

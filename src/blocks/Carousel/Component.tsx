@@ -13,6 +13,8 @@ export const CarouselBlock: React.FC<Props> = ({
   slides,
   hasStaticSection,
   staticSectionContent,
+  staticSectionHasLink,
+  staticSectionLink,
   staticSectionSide,
   theme = 'dark',
 }) => {
@@ -99,14 +101,23 @@ export const CarouselBlock: React.FC<Props> = ({
               staticSectionSide === 'right' && 'md:order-2',
             )}
           >
-            <RichText
-              className={cn(
-                'max-w-prose prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6',
-                proseClass,
+            <div className="max-w-prose">
+              <RichText
+                className={cn(
+                  'prose-p:text-lg prose-h2:text-4xl prose-h2:md:text-5xl prose-h2:font-bold prose-h2:mb-2 prose-h3:text-2xl prose-h3:mb-6',
+                  proseClass,
+                )}
+                data={staticSectionContent}
+                enableGutter={false}
+              />
+              {staticSectionHasLink && staticSectionLink && (
+                <CMSLink
+                  {...staticSectionLink}
+                  className="mt-8 text-white"
+                  appearance="destructive"
+                />
               )}
-              data={staticSectionContent}
-              enableGutter={false}
-            />
+            </div>
           </div>
           <div className={cn('w-full md:w-1/2', staticSectionSide === 'right' && 'md:order-1')}>
             {carousel}
