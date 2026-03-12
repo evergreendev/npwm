@@ -2,6 +2,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -63,6 +64,18 @@ export default buildConfig({
   collections: [Pages, Posts, Exhibits, Media, Categories, Users, Hours, Reviews, Transcripts],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.SMTP_FROM_ADDRESS || 'noreply@example.com',
+    defaultFromName: process.env.SMTP_FROM_NAME || 'Payload CMS',
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,
