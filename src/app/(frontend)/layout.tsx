@@ -51,6 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             gtag('config', 'AW-970922599');
             gtag('config', 'G-6GVGKSGY2F');
             gtag('config', 'G-BWZ3SGKXF2');
+            gtag('config', 'G-XLYRJVCV31');
           `}
         </Script>
       </head>
