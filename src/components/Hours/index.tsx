@@ -43,7 +43,7 @@ export const Hours: React.FC<HoursProps> = async ({ mode = 'current', className 
     <div className={cn('hours-all space-y-4', className)}>
       {upcomingHours.map((h) => (
         <div key={h.id} className="hour-entry flex flex-col sm:flex-row sm:gap-2">
-          <span className="font-bold">{h.label}:</span>
+          <p className="font-bold">{h.label}:</p>
           <div className="font-normal">
              <RichText data={h.content} enableProse={false} />
           </div>
