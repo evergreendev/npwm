@@ -8,7 +8,7 @@ type Props = {
 
 export const HoursBlock: React.FC<Props> = ({ id, mode, className }) => {
   return (
-    <div className="container my-12" id={id || undefined}>
+    <div className="w-full" id={id || undefined}>
       <Hours mode={mode} className={className} />
     </div>
   )
