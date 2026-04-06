@@ -14,8 +14,7 @@ export const HoursAddressLinksBlock: React.FC<HoursAddressLinksBlockType> = (pro
           <span className="text-sm uppercase tracking-wider text-text-primary mb-1">
             Today&apos;s Hours
           </span>
-          {/*todo fix this bug<Hours mode="current" className="text-lg font-semibold" />*/}
-          <p className="m-0 not-prose">9:00am-5:00pm</p>
+          <Hours mode="current" className="text-lg font-semibold" />
         </div>
 
         {/* Column 2: Address */}

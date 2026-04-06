@@ -3,6 +3,9 @@ import type { Block } from 'payload'
 export const HoursBlock: Block = {
   slug: 'hoursBlock',
   interfaceName: 'HoursBlock',
+  admin: {
+    group: 'Content',
+  },
   fields: [
     {
       name: 'id',

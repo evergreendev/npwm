@@ -11,6 +11,7 @@ import {
 import { link } from '@/fields/link'
 import { Iframe as IframeBlock } from '../IframeBlock/config'
 import { HoursAddressLinks as HoursAddressLinksBlock } from '../HoursAddressLinks/config'
+import { HoursBlock } from '../HoursBlock/config'
 import { MediaBlock } from '../MediaBlock/config'
 import { MachForm } from '@/blocks/MachForm/config'
 
@@ -46,7 +47,7 @@ const columnFields: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-          BlocksFeature({ blocks: [IframeBlock, HoursAddressLinksBlock, MediaBlock, MachForm] }),
+          BlocksFeature({ blocks: [IframeBlock, HoursAddressLinksBlock, HoursBlock, MediaBlock, MachForm] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]

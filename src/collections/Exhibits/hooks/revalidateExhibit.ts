@@ -1,7 +1,5 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidatePath, revalidateTag } from 'next/cache'
-
 import type { Exhibit } from '@/payload-types'
 
 export const revalidateExhibit: CollectionAfterChangeHook<Exhibit> = ({
@@ -15,8 +13,10 @@ export const revalidateExhibit: CollectionAfterChangeHook<Exhibit> = ({
 
       payload.logger.info(`Revalidating exhibit at path: ${path}`)
 
-      revalidatePath(path)
-      revalidateTag('exhibits-sitemap')
+      import('next/cache').then(({ revalidatePath, revalidateTag }) => {
+        revalidatePath(path)
+        revalidateTag('exhibits-sitemap')
+      })
     }
 
     // If the exhibit was previously published, we need to revalidate the old path
@@ -25,8 +25,10 @@ export const revalidateExhibit: CollectionAfterChangeHook<Exhibit> = ({
 
       payload.logger.info(`Revalidating old exhibit at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
-      revalidateTag('exhibits-sitemap')
+      import('next/cache').then(({ revalidatePath, revalidateTag }) => {
+        revalidatePath(oldPath)
+        revalidateTag('exhibits-sitemap')
+      })
     }
   }
   return doc
@@ -35,8 +37,10 @@ export const revalidateExhibit: CollectionAfterChangeHook<Exhibit> = ({
 export const revalidateDelete: CollectionAfterDeleteHook<Exhibit> = ({ doc, req: { context } }) => {
   if (!context.disableRevalidate) {
     const path = `/exhibit/${doc?.slug}`
-    revalidatePath(path)
-    revalidateTag('exhibits-sitemap')
+    import('next/cache').then(({ revalidatePath, revalidateTag }) => {
+      revalidatePath(path)
+      revalidateTag('exhibits-sitemap')
+    })
   }
 
   return doc

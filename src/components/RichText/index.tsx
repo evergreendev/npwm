@@ -18,6 +18,7 @@ import type {
   CallToActionBlock as CTABlockProps,
   IframeBlock as IframeBlockProps,
   HoursAddressLinksBlock as HoursAddressLinksBlockProps,
+  HoursBlock as HoursBlockProps,
   MediaBlock as MediaBlockProps,
   UnderlineBlock as UnderlineBlockProps,
   MachFormBlock as MachFormBlockProps,
@@ -25,10 +26,13 @@ import type {
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { IframeBlock } from '@/blocks/IframeBlock/Component'
-import { HoursAddressLinksBlock } from '@/blocks/HoursAddressLinks/Component'
 import { Underline } from '@/components/Underline'
 import { MachFormBlock } from '@/blocks/MachForm/Component'
 import { cn } from '@/utilities/ui'
+import dynamic from 'next/dynamic'
+
+const HoursAddressLinksBlock = dynamic(() => import('@/blocks/HoursAddressLinks/Component').then(mod => mod.HoursAddressLinksBlock))
+const HoursBlock = dynamic(() => import('@/blocks/HoursBlock/Component').then(mod => mod.HoursBlock))
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -41,6 +45,7 @@ type NodeTypes =
       | CodeBlockProps
       | UnderlineBlockProps
       | MachFormBlockProps
+      | HoursBlockProps
     >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -72,7 +77,12 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     /*@ts-expect-error Iframe problems*/
     iframe: ({ node }) => <IframeBlock {...node.fields} />,
     machForm: ({ node }) => <MachFormBlock {...node.fields} />,
-    hoursAddressLinks: ({ node }) => <HoursAddressLinksBlock {...node.fields} />,
+    hoursAddressLinks: ({ node }) => (
+      <HoursAddressLinksBlock {...node.fields} />
+    ),
+    hoursBlock: ({ node }) => (
+      <HoursBlock {...node.fields} />
+    ),
     underline: ({ node }) => (
       <Underline
         className="my-4"

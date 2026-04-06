@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Media } from '@/components/Media'
-import RichText from '@/components/RichText'
+import RichText from '@/components/RichText/index.client'
 import { cn } from '@/utilities/ui'
 import type { CollapsibleBlock as CollapsibleBlockProps } from '@/payload-types'
 import { ChevronDown } from 'lucide-react'
