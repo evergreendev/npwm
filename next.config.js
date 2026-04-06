@@ -4,11 +4,20 @@ import redirects from './redirects.js'
 
 const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
+const serverUrl = new URL(NEXT_PUBLIC_SERVER_URL);
+const urls = [NEXT_PUBLIC_SERVER_URL];
+
+if (!serverUrl.hostname.startsWith('www.')) {
+  const wwwUrl = new URL(NEXT_PUBLIC_SERVER_URL);
+  wwwUrl.hostname = `www.${wwwUrl.hostname}`;
+  urls.push(wwwUrl.toString());
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
+      ...urls.map((item) => {
         const url = new URL(item)
 
         return {
