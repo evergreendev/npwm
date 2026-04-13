@@ -13,6 +13,7 @@ import { Exhibits } from './collections/Exhibits'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { Banner } from './Banner/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -63,7 +64,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Exhibits, Media, Categories, Users, Hours, Reviews, Transcripts],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, Banner],
   email: nodemailerAdapter({
     defaultFromAddress: process.env.SMTP_FROM_ADDRESS || 'noreply@example.com',
     defaultFromName: process.env.SMTP_FROM_NAME || 'Payload CMS',

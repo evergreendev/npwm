@@ -18,6 +18,7 @@ const montserrat = Montserrat({
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
+import { Banner } from '@/Banner/Component'
 import { Providers } from '@/providers'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
@@ -63,6 +64,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
+          <Banner />
           <Header />
           <main>
             {children}
