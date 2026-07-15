@@ -29,6 +29,7 @@ export const VideoBlock: React.FC<VideoBlockProps & { className?: string }> = (p
                 resource={thumbnail}
                 fill
                 imgClassName="object-cover w-full h-full"
+                size="(max-width: 768px) 100vw, 768px"
               />
             )}
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
@@ -49,6 +50,7 @@ export const VideoBlock: React.FC<VideoBlockProps & { className?: string }> = (p
                 resource={videoUpload}
                 fill
                 videoClassName="w-full h-full object-cover"
+                size="(max-width: 768px) 100vw, 768px"
               />
             )}
             {videoType === 'link' && videoLink && (

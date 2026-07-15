@@ -128,6 +128,7 @@ export const ScrollingImageSection: React.FC<
           <Media
             imgClassName={`object-cover w-full background-position-center z-20`}
             resource={backgroundImage}
+            size="100vw"
             priority
           />
         )}
@@ -187,6 +188,7 @@ export const ScrollingImageSection: React.FC<
             imgClassName={`object-cover w-full h-full background-position-center z-20
             ${containerScrollInfo.isVisible || !initialFadeinIsComplete ? 'opacity-100' : 'opacity-0'}  ${initialFadeinIsComplete ? 'duration-1000 transition-opacity' : 'duration-0'}`}
             resource={backgroundImage}
+            size="100vw"
             priority
           />
         )}
@@ -196,6 +198,7 @@ export const ScrollingImageSection: React.FC<
             imgClassName={`object-cover w-full h-full background-position-center z-10
               ${!isPastTop ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
             resource={prevBackgroundImage}
+            size="100vw"
           />
         )}
         {hasNextSection && nextBackgroundImage && typeof nextBackgroundImage === 'object' && (
@@ -203,6 +206,7 @@ export const ScrollingImageSection: React.FC<
             fill
             imgClassName="object-cover w-full h-full background-position-center z-0"
             resource={nextBackgroundImage}
+            size="100vw"
           />
         )}
       </div>

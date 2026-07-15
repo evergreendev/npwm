@@ -67,6 +67,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, hoursContent, 
                       alt={logo.alt || ''}
                       width={logo.width || 100}
                       height={logo.height || 100}
+                      sizes="160px"
                       loading="eager"
                       priority={true}
                     />
@@ -110,6 +111,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, hoursContent, 
                       alt={logo.alt || ''}
                       width={logo.width || 100}
                       height={logo.height || 100}
+                      sizes="160px"
                       loading="eager"
                       priority={true}
                     />

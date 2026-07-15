@@ -70,6 +70,7 @@ export const PostHero: React.FC<{
             imgClassName="-z-10 object-cover"
             videoClassName="-z-10 object-cover"
             resource={heroImage}
+            size="100vw"
           />
         )}
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-linear-to-t from-black to-transparent" />

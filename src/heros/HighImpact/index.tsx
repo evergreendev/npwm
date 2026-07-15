@@ -27,6 +27,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, headerLinks, pla
               priority
               resource={media}
               placeholder={placeholder}
+              size="100vw"
             />
           )}
         </div>

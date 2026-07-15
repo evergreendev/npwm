@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
+import NextImage from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 
 import type { Props as MediaProps } from '../types'
@@ -8,7 +9,7 @@ import type { Props as MediaProps } from '../types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const VideoMedia: React.FC<MediaProps> = (props) => {
-  const { onClick, resource, videoClassName, controls, placeholder } = props
+  const { onClick, resource, videoClassName, controls, placeholder, priority, size } = props
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoReady, setVideoReady] = useState(false)
@@ -51,19 +52,24 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
           onClick={onClick}
           onContextMenu={(e) => (controls ? undefined : e.preventDefault())}
           playsInline
-          poster={posterUrl}
           ref={videoRef}
         >
           <source src={getMediaUrl(`/media/${filename}`)} type={resource.mimeType || undefined} />
         </video>
         {posterUrl && (
-          <div
+          <NextImage
+            alt=""
+            aria-hidden="true"
             className={cn(
-              'absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-1000 pointer-events-none',
+              'z-0 object-cover transition-opacity duration-1000 pointer-events-none',
               videoReady ? 'opacity-0' : 'opacity-100',
               videoClassName,
             )}
-            style={{ backgroundImage: `url(${posterUrl})` }}
+            fill
+            priority={priority}
+            quality={75}
+            sizes={size || '100vw'}
+            src={posterUrl}
           />
         )}
       </div>

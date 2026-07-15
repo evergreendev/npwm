@@ -45,6 +45,7 @@ export async function Footer() {
                   alt={logo.alt || ''}
                   width={logo.width || 100}
                   height={logo.height || 100}
+                  sizes="160px"
                 />
               </Link>
             ) : (
