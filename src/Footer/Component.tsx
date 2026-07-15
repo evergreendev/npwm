@@ -61,17 +61,32 @@ export async function Footer() {
               <span className="font-bold uppercase text-center text-2xl">Follow Us</span>
               <div className="flex gap-4 items-center">
                 {facebook && (
-                  <Link href={facebook} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    aria-label="Visit The National Presidential Wax Museum on Facebook"
+                    href={facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Facebook size={20} />
                   </Link>
                 )}
                 {instagram && (
-                  <Link href={instagram} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    aria-label="Visit The National Presidential Wax Museum on Instagram"
+                    href={instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Instagram size={20} />
                   </Link>
                 )}
                 {youtube && (
-                  <Link href={youtube} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    aria-label="Visit The National Presidential Wax Museum on YouTube"
+                    href={youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Youtube size={20} />
                   </Link>
                 )}
