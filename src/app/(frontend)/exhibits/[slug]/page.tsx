@@ -43,7 +43,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const url = '/exhibit/' + decodedSlug
+  const url = '/exhibits/' + decodedSlug
 
   const exhibit = await queryExhibitBySlug({
     slug: decodedSlug,
