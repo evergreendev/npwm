@@ -1,25 +1,23 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 import type { Hour } from '@/payload-types'
 
-export const revalidateHour: CollectionAfterChangeHook<Hour> = ({
+export const revalidateHour: CollectionAfterChangeHook<Hour> = async ({
   doc,
   req: { payload, context },
 }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating hours`)
 
-    import('next/cache').then(({ revalidateTag }) => {
-      revalidateTag('hours')
-    })
+    const { revalidateTag } = await import('next/cache')
+    revalidateTag('hours')
   }
   return doc
 }
 
-export const revalidateDeleteHour: CollectionAfterDeleteHook<Hour> = ({ doc, req: { context } }) => {
+export const revalidateDeleteHour: CollectionAfterDeleteHook<Hour> = async ({ doc, req: { context } }) => {
   if (!context.disableRevalidate) {
-    import('next/cache').then(({ revalidateTag }) => {
-      revalidateTag('hours')
-    })
+    const { revalidateTag } = await import('next/cache')
+    revalidateTag('hours')
   }
 
   return doc
