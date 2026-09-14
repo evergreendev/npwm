@@ -3,12 +3,12 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
 
 import type { Header } from '@/payload-types'
-import { getCachedHours } from '@/utilities/getHours'
+import { getHours } from '@/utilities/getHours'
 import RichText from '@/components/RichText'
 
 export async function Header() {
   const headerData: Header = await getCachedGlobal('header', 1)();
-  const hours = await getCachedHours()();
+  const hours = await getHours();
 
   if (hours.length === 0) return <HeaderClient data={headerData} />
 

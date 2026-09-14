@@ -1,8 +1,11 @@
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { unstable_cache } from 'next/cache'
+import { connection } from 'next/server'
 
-async function getHours() {
+export async function getHours() {
+  // Read fresh hours at request time, including when the current date changes.
+  await connection()
+
   const payload = await getPayload({ config: configPromise })
 
   const hours = await payload.find({
@@ -19,8 +22,3 @@ async function getHours() {
 
   return hours.docs
 }
-
-export const getCachedHours = () =>
-  unstable_cache(async () => getHours(), ['hours'], {
-    tags: ['hours'],
-  })

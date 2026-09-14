@@ -1,5 +1,5 @@
 import React from 'react'
-import { getCachedHours } from '@/utilities/getHours'
+import { getHours } from '@/utilities/getHours'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
 
@@ -9,7 +9,7 @@ interface HoursProps {
 }
 
 export const Hours: React.FC<HoursProps> = async ({ mode = 'current', className }) => {
-  const hours = await getCachedHours()()
+  const hours = await getHours()
   const now = new Date()
   // Reset time to midnight for comparison if needed, but the picker is 'dayOnly'
   // so hoursStart/End will likely be at 00:00:00.000
