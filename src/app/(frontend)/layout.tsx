@@ -38,8 +38,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
         <meta name="google-site-verification" content="BVcKwadrBDHmmI-t-qSFfYfsL581BgenCw_NqSa09QM" />
         <Script
           async
@@ -107,6 +105,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=2', type: 'image/x-icon', sizes: '32x32' },
+      { url: '/favicon.svg?v=2', type: 'image/svg+xml', sizes: 'any' },
+    ],
+  },
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
