@@ -5,9 +5,23 @@ import React from 'react'
 import type { Header } from '@/payload-types'
 import { getHours } from '@/utilities/getHours'
 import RichText from '@/components/RichText'
+import { getSeasonClosure } from '@/utilities/getSeasonClosure'
 
 export async function Header() {
   const headerData: Header = await getCachedGlobal('header', 1)();
+  const closure = await getSeasonClosure()
+  if (closure.closedForSeason) {
+    return (
+      <HeaderClient
+        data={headerData}
+        hoursHeading="Current Hours"
+        hoursContent={
+          <p className="whitespace-pre-line">{closure.message?.trim() || 'Closed for the season.'}</p>
+        }
+        hasHours
+      />
+    )
+  }
   const hours = await getHours();
 
   if (hours.length === 0) return <HeaderClient data={headerData} />

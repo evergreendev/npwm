@@ -121,11 +121,13 @@ export interface Config {
     header: Header;
     footer: Footer;
     banner: Banner;
+    'closed-for-season': ClosedForSeason;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     banner: BannerSelect<false> | BannerSelect<true>;
+    'closed-for-season': ClosedForSeasonSelect<false> | ClosedForSeasonSelect<true>;
   };
   locale: null;
   user: User;
@@ -2500,6 +2502,23 @@ export interface Banner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "closed-for-season".
+ */
+export interface ClosedForSeason {
+  id: number;
+  /**
+   * Replace all hours displays with the message below while enabled.
+   */
+  closedForSeason?: boolean | null;
+  /**
+   * Shown everywhere hours normally appear. Line breaks are preserved.
+   */
+  message: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2566,6 +2585,17 @@ export interface BannerSelect<T extends boolean = true> {
   active?: T;
   banner_start?: T;
   banner_end?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "closed-for-season_select".
+ */
+export interface ClosedForSeasonSelect<T extends boolean = true> {
+  closedForSeason?: T;
   message?: T;
   updatedAt?: T;
   createdAt?: T;

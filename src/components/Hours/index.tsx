@@ -2,6 +2,7 @@ import React from 'react'
 import { getHours } from '@/utilities/getHours'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
+import { getSeasonClosure } from '@/utilities/getSeasonClosure'
 
 interface HoursProps {
   mode?: 'current' | 'all'
@@ -9,6 +10,15 @@ interface HoursProps {
 }
 
 export const Hours: React.FC<HoursProps> = async ({ mode = 'current', className }) => {
+  const closure = await getSeasonClosure()
+  if (closure.closedForSeason) {
+    return (
+      <div className={cn('hours-closed whitespace-pre-line', className)}>
+        {closure.message?.trim() || 'Closed for the season.'}
+      </div>
+    )
+  }
+
   const hours = await getHours()
   const now = new Date()
   // Reset time to midnight for comparison if needed, but the picker is 'dayOnly'
